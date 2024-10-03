@@ -1,0 +1,121 @@
+/*****************
+アカウントログイン画面
+******************/
+body{
+    background-image: url("/img/top.jpg"); /* 画像ファイルの指定 */
+    background-position: center center;        /* 画像を常に天地左右の中央に配置 */
+    background-repeat: no-repeat;              /* 画像をタイル状に繰り返し表示しない */
+    background-attachment: fixed;       /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+    background-size: cover;             /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+    background-color: white;        /* 背景画像が読み込まれる前に表示される背景のカラー */
+    margin-bottom: 100px;
+}
+h1{
+    position: absolute;
+    top: 6%;
+    left: 60%;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 45px;
+    white-space: nowrap;
+    text-shadow:
+    white 2px 0px 1px, white -2px 0px 1px,
+    white 0px -2px 1px, white -2px 0px 1px,
+    white 2px 2px 1px, white -2px 2px 1px,
+    white 2px -2px 1px, white -2px -2px 1px,
+    white 1px 2px 1px, white -1px 2px 1px,
+    white 1px -2px 1px, white -1px -2px 1px,
+    white 2px 1px 1px, white -2px 1px 1px,
+    white 2px -1px 1px, white -2px -1px 1px,
+    white 1px 1px 1px, white -1px 1px 1px,
+    white 1px -1px 1px, white -1px -1px 1px;
+}
+h2{
+    position: absolute;
+    top: 35%;
+    left: 70%;
+    line-height: 60px;
+    font-weight: bolder;
+    font-size: 70px;
+    font-family: 'Borgen', sans-serif;
+    color: #00a3af;
+}
+.d-grid.gap-2.col-3.mx-auto{
+    position: absolute;
+    top: 62%;
+    left: 58%;
+    margin: 0;
+    padding: 0;
+    /* backdrop-filter: blur(4px); */
+    /* box-shadow: 10px 10px 30px 1px rgba(0, 0, 0, 0.5); */
+}
+div label{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    text-shadow:
+    white 2px 0px 3px, white -2px 0px 3px,
+    white 0px -2px 3px, white -2px 0px 3px,
+    white 2px 2px 3px, white -2px 2px 3px,
+    white 2px -2px 3px, white -2px -2px 3px,
+    white 1px 2px 3px, white -1px 2px 3px,
+    white 1px -2px 3px, white -1px -2px 3px,
+    white 2px 1px 3px, white -2px 1px 3px,
+    white 2px -1px 3px, white -2px -1px 3px,
+    white 1px 1px 3px, white -1px 1px 3px,
+    white 1px -1px 3px, white -1px -1px 3px;
+}
+.p-select{
+    text-align: center;
+    margin: -5px;
+    padding: 0;
+    /* backdrop-filter: blur(4px); */
+}
+.btn.btn-custom{
+    border-radius: 30px 30px 30px 30px;
+    width: 290px;
+    margin: auto;
+    background-color: #00a3af;
+    color: white;
+}
+footer{
+    position: absolute;
+    right: 45%;
+    bottom: -0.5%;
+    text-shadow:
+    white 2px 0px 3px, white -2px 0px 3px,
+    white 0px -2px 3px, white -2px 0px 3px,
+    white 2px 2px 3px, white -2px 2px 3px,
+    white 2px -2px 3px, white -2px -2px 3px,
+    white 1px 2px 3px, white -1px 2px 3px,
+    white 1px -2px 3px, white -1px -2px 3px,
+    white 2px 1px 3px, white -2px 1px 3px,
+    white 2px -1px 3px, white -2px -1px 3px,
+    white 1px 1px 3px, white -1px 1px 3px,
+    white 1px -1px 3px, white -1px -1px 3px;
+}
+/*************************************
+アカウント作成・アイコン・ログイン画面モーダル
+*************************************/
+.w-100.mb-2.btn.btn-lg.rounded-3.btn-primary{
+    border-radius: 30px 30px 30px 30px;
+}
+.p-modal{
+    text-align: center;
+}
+.label-color{
+    color: #d3d3d3;
+}
+.rounded-circle{
+    margin: 100px;
+    margin-top: -1px;
+    margin-bottom: 20px;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+}
+.btn.btn-secondary{
+    border-radius: 30px 30px 30px 30px;
+    width: 290px;
+    margin: auto;
+}
