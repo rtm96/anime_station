@@ -1,0 +1,29 @@
+/*******************
+アカウント登録画面
+*******************/
+.rounded-circle{
+    margin: 10px;
+    margin-left: 260px;
+}
+.btn.btn-custom{
+    border-radius: 30px 30px 30px 30px;
+    width: 190px;
+    margin: auto;
+    margin-top: -10px;
+    margin-left: 200px;
+    margin-bottom: 20px;
+    background-color: #00a3af;
+    color: white;
+}
+.text-body-secondary{
+    margin-left: 50px;
+}
+.text-end.mt-3{
+    margin-bottom: 100px;
+}
+.label-color{
+    color: #d3d3d3;
+}
+.error-text{
+    color: #dc143c;
+}

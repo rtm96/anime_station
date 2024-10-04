@@ -2,13 +2,11 @@
 <!doctype html>
 <html lang="ja" data-bs-theme="auto">
     <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
-
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Hugo 0.112.5">
-        <title>Sidebars · Bootstrap v5.3</title>
 
         <link rel="canonical" href="https://getbootstrap.jp/docs/5.3/examples/sidebars/">
 
@@ -99,8 +97,14 @@
         .profile-name{
             font-weight:100;
         }
-        .side_content{
+        .container {
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .d-flex.flex-nowrap{
             position: sticky;
+            top: 0;
         }
     </style>
 
@@ -154,7 +158,7 @@
             <h1 class="visually-hidden">Sidebars examples</h1>
 
             <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
-                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <a href="/home" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <span class="fs-4">anime_station</span>
                 </a>
 
@@ -165,19 +169,13 @@
                     <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
                     <strong class="profile-name">ユーザーネーム</strong>
                     </a>
-                    {{-- <ul class="dropdown-menu text-small shadow">
-                    <li><a class="dropdown-item" href="#">投稿一覧</a></li>
-                    <li><a class="dropdown-item" href="#">プロフィール</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">ログアウト</a></li>
-                    </ul> --}}
                 </div>
 
                 <div>　</div>
 
                 <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link link-body-emphasis" aria-current="page">
+                    <a href="/home" class="nav-link link-body-emphasis" aria-current="page">
                     <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
                     ホーム
                     </a>
@@ -194,12 +192,20 @@
                     投稿一覧
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#" class="nav-link link-body-emphasis">
                     <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
                     再生履歴
                     </a>
+                </li> --}}
+                @can('admin')
+                <li>
+                    <a href="/users" class="nav-link link-body-emphasis">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+                    アカウント管理
+                    </a>
                 </li>
+                @endcan
                 </ul>
                 <hr>
 
@@ -226,6 +232,6 @@
             </main>
             <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
             <script src="sidebars.js"></script>
-        </div>  
+        </div>
     </body>
 </html>

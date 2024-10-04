@@ -1,0 +1,27 @@
+/*****************
+管理者用アカウント一覧画面
+******************/
+.content{
+    margin-top: -400px;
+    padding-top:  -400px;
+    background-color:#b3d874;
+    align-content: center;
+    text-align: center;
+    width: 100vw;/*画面全体に引き伸ばす*/
+    margin-right: calc(50% - 54vw);/*右横の余白を無くす*/
+}
+h3{
+    position:absolute;
+    margin-left: 50px;
+}
+.row.mb-3{
+    margin-left: 260px;
+}
+.table-responsive{
+    margin-left: 20px;
+    /* margin: auto; */
+}
+.btn.btn-secondary.mt-3{
+    display:block;
+    margin-left: 20px;
+}

@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://getbootstrap.jp/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
     {{-- CSS --}}
     <link rel="stylesheet" href="{{asset('/css/style_account.css')}}">
 
@@ -19,6 +23,30 @@
     {{-- script --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    {{-- JSscript --}}
+    <script>
+        window.onload = function(){
+        // テキストボックスのDOMを取得
+        const username = document.getElementById("floatingInput1","floatingInput2","floatingInput3","floatingInput4");
+        // 活性/非活性を切り替えるボタンのDOMを取得
+        const button = document.getElementById("sendbutton");
+        // 入力テキストのキーアップイベント
+        username.addEventListener('keyup', function() {
+        // テキストボックスに入力された値を取得
+        const text = username.value;
+        console.log(text);
+        // テキストが入力されている場合
+        if(text) {
+        // ボタンのdisabled属性を取り除く
+            button.disabled = null;
+            } else {
+        // ボタンにdisabledを設定する
+            button.disabled = "disabled";
+            }
+        })
+        }
+    </script>
+
     <title>ログイン / anime_station</title>
 </head>
     <body>
@@ -27,75 +55,10 @@
         <h2>anime<br/>station</h2>
         <div class="d-grid gap-2 col-3 mx-auto">
             <label>いますぐエントリー</label>
-            <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#createModal">アカウント作成</button>
+            <a class="btn btn-custom" href="{{ route('register')}}" role="button">アカウント作成</a>
                 <p class="p-select">or</p>
             <label>アカウントをお持ちの方はこちら</label>
             <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#loginModal">ログイン</button>
-        </div>
-
-        {{-- アカウント作成モーダル表示 --}}
-        <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModal" aria-hidden="true">
-            <div>
-            <div class="modal-dialog" role="document">
-                <div class="modal-content rounded-4 shadow">
-                    <div class="modal-header p-5 pb-4 border-bottom-0">
-                        <h4 class="fw-bold mb-0 fs-2">アカウントを作成</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body p-5 pt-0">
-                        <form class="">
-                        <div class="form-floating mb-4">
-                            <input type="name" class="form-control rounded-3" id="floatingInput" placeholder="name" autofocus>
-                            <label for="floatingInput" class="label-color">ユーザーネーム</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput" class="label-color">メールアドレス</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword" class="label-color">パスワード</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword" class="label-color">パスワード確認</label>
-                        </div>
-                        <div>
-                            <p class="p-modal">入力した内容で登録する</p>
-                        </div>
-                        <button class="w-100 mb-2 btn btn-custom" type="button" data-bs-toggle="modal" data-bs-target="#iconModal">次へ</button>
-                        <small class="text-body-secondary">By clicking Entry, you agree to the terms of use.</small>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
-
-        {{-- アイコン画像選択モーダル表示 --}}
-        <div class="modal fade" id="iconModal" tabindex="-1" aria-labelledby="iconModal" aria-hidden="true">
-            <div>
-            <div class="modal-dialog" role="document">
-                <div class="modal-content rounded-4 shadow">
-                    <div class="modal-header p-5 pb-4 border-bottom-0">
-                        <h4 class="fw-bold mb-0 fs-2">アイコンを選択する</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body p-5 pt-0">
-                        <form class="">
-                        <img src="/img/default-icon.jpg" class="rounded-circle" alt="" width="200" height="200">
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">このアイコン画像に決定</label>
-                            <input class="form-control" type="file" id="formFile">
-                        </div>
-                        <button class="w-100 mb-2 btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">スキップする</button>
-                        <button class="w-100 mb-2 btn btn-custom" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">次へ</button>
-                        <small class="text-body-secondary">By clicking Entry, you agree to the terms of use.</small>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            </div>
         </div>
 
         {{-- ログインモーダル表示 --}}

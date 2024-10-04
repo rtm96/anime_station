@@ -9,12 +9,20 @@ use Illuminate\Support\Facades\Auth;
 class AccountController extends Controller
 {
     /**
-     * ログイン画面　モーダルの場合、どのように変更すれば良いか？
+     * ログイン画面
      */
     public function showLogin()
     {
         
         return view('account.login');//まだ変更していない
+    }
+
+    /**
+     * アカウント画面
+     */
+    public function register(Request $request){
+        
+        return view('account.register');
     }
 
     /**
@@ -27,7 +35,7 @@ class AccountController extends Controller
     {
         // バリデーション
         $validated = $request->validate([
-            'name' => 'required|max:20',
+            'name' => 'required|string|max:20|unique:users',
             'email' => 'required|email|unique:users,email|max:255|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
             'password' => 'required|min:8|max:16|confirmed|regex:/^[a-zA-Z0-9]+$/',
         ],[
