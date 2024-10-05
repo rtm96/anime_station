@@ -23,26 +23,10 @@
     {{-- script --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    {{-- JSscript --}}
-    <script>
-        // アイコン画像プレビュー処理
-        // 画像が選択される度に、この中の処理が走る
-        $('#icon').on('change', function (ev) {
-            // このFileReaderが画像を読み込む上で大切
-            const reader = new FileReader();
-            // ファイル名を取得
-            const fileName = ev.target.files[0].name;
-            // 画像が読み込まれた時の動作を記述
-            reader.onload = function (ev) {
-                $('#icon_img_prv').attr('src', ev.target.result).css('width', '150px').css('height', '150px');
-            }
-            reader.readAsDataURL(this.files[0]);
-        })
-    </script>
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
 
     <title>アカウント登録 / anime_station</title>
 </head>
@@ -53,7 +37,7 @@
                     <p class="fs-3">アカウントを登録する</p>
                 </div>
 
-                <form action="{{ route('acctRegister') }}" method="post">
+                <form action="{{ route('acctRegister') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="container">
                     <div class="row justify-content-center"> <div class="col-md-8">
@@ -97,8 +81,8 @@
                                 <div class="modal-body p-5 pt-0">
                                     <img id="icon_img_prv" src="{{ asset('/img/default-icon.jpg') }}" class="rounded-circle" alt="" width="200" height="200">
                                     <div class="mb-3">
-                                        <label for="formFile" class="form-label">このアイコン画像に決定</label>
-                                        <input id="icon" class="form-control" type="file" id="formFile">
+                                        <label for="icon" class="form-label">このアイコン画像に決定</label>
+                                        <input id="icon" class="form-control" type="file">
                                     </div>
                                 </div>
 
@@ -121,5 +105,22 @@
         </div>
 
     </body>
+        {{-- JSscript --}}
+        <script>
+            // アイコン画像プレビュー処理
+            // 画像が選択される度に、この中の処理が走る
+            $('#icon').on('change', function (ev) {
+                // このFileReaderが画像を読み込む上で大切
+                const reader = new FileReader();
+                // ファイル名を取得
+                const fileName = ev.target.files[0].name;
+                // 画像が読み込まれた時の動作を記述
+                reader.onload = function (ev) {
+                    $('#icon_img_prv').attr('src', ev.target.result).css('width', '200px').css('height', '200px');
+                }
+                reader.readAsDataURL(this.files[0]);
+            })
+        </script>
+    
 
 </html>

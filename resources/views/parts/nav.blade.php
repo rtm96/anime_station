@@ -95,7 +95,7 @@
             z-index: 1500;
         }
         .profile-name{
-            font-weight:100;
+            font-weight:300;
         }
         .container {
             display: flex;
@@ -158,7 +158,7 @@
             <h1 class="visually-hidden">Sidebars examples</h1>
 
             <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
-                <a href="/home" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <a href="/profile" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <span class="fs-4">anime_station</span>
                 </a>
 
@@ -166,22 +166,22 @@
 
                 <div class="dropdown">
                     <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none">
-                    <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                    <strong class="profile-name">ユーザーネーム</strong>
+                    <img src="{{ Auth::user()->image}}" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong class="profile-name">{{ Auth::user()->name}}</strong>
                     </a>
                 </div>
 
                 <div>　</div>
 
                 <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="/home" class="nav-link link-body-emphasis" aria-current="page">
                     <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
                     ホーム
                     </a>
-                </li>
+                </li> --}}
                 <li>
-                    <a href="#" class="nav-link link-body-emphasis">
+                    <a href="/profile" class="nav-link link-body-emphasis">
                     <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
                     プロフィール
                     </a>
@@ -212,7 +212,7 @@
                 <div>
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="/logout">
                             　
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-closed" viewBox="0 0 16 16">
                                 <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z"/>

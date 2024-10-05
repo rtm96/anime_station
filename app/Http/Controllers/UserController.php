@@ -66,12 +66,4 @@ class UserController extends Controller
     }
 
 
-
-    /**
-     * アカウント一覧画面表示
-     */
-    public function test(){
-
-        return view('user.test');
-    }
 }

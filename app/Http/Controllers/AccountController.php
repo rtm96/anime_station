@@ -60,17 +60,13 @@ class AccountController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password), 
+            'image' => $request->input('image') ?? 'default-icon.jpg',
         ]);
         
         // dd($user); // デバッグ用: 保存されたユーザーの情報を表示
 
         // ログイン画面にリダイレクト
-        // return view('account.login');
-
-        //テストのコード
-        // $validated['user_id'] = Auth::id();
-        // Item::create($validated);
-        // return redirect()->route('index');
+        return view('account.login');
     }
 
     /**
@@ -83,8 +79,17 @@ class AccountController extends Controller
     {
         // バリデーション
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:8|max:16',
+            'email' => 'required|email|max:255',
+            'password' => 'required|min:8|max:16|regex:/^[a-zA-Z0-9]+$/',
+        ],[
+            //未入力・重複・超過エラーメッセージ表示
+            'email.required' => 'メールアドレスは必須です。',
+            'email.email' => '有効なメールアドレスを入力してください。',
+            'email.max' => 'メールアドレスは最大255文字まで入力可能です。',
+            'password.required' => 'パスワードは必須です。',
+            'password.min' => '8文字以上である必要があります。',
+            'password.max' => '16文字以内で入力してください。',
+            'password.regex' => 'パスワードは半角英数字のみで入力してください。',
         ]);
 
         // 入力された email と password を取得
@@ -96,8 +101,8 @@ class AccountController extends Controller
         if ($user) {
         // email が存在する場合、パスワードをチェックして認証を試行
         if (Auth::attempt($credentials)) {
-            // 認証成功した場合、ユーザーをhomeにリダイレクト
-            return redirect('/home');
+            // 認証成功した場合、ユーザーをプロフィール画面にリダイレクト
+            return redirect('/profile');
         } else {
             // パスワードが間違っている場合、email を保持してエラーメッセージを返す
             return redirect()->back()//backが必要か確認する

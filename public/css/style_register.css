@@ -3,7 +3,6 @@
 *******************/
 .rounded-circle{
     margin: 10px;
-    margin-left: 260px;
 }
 .btn.btn-custom{
     border-radius: 30px 30px 30px 30px;
@@ -26,4 +25,7 @@
 }
 .error-text{
     color: #dc143c;
+}
+.modal-body.p-5.pt-0{
+    text-align: center;
 }

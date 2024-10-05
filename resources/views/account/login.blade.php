@@ -70,23 +70,30 @@
                         <h4 class="fw-bold mb-0 fs-2">anime_station<br/>にログイン</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body p-5 pt-0">
-                        <form class="">
-                        <div class="form-floating mb-4">
-                            <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput" class="label-color">メールアドレス</label>
+                    <form method="post" action="{{ route('login') }}">
+                    @csrf
+                        <div class="modal-body p-5 pt-0">
+                            <div class="form-floating mb-4">
+                                <input type="email" name="email" class="form-control rounded-3" id="floatingInput" placeholder="メールアドレス" value="{{ old('email') }}">
+                                <label for="floatingInput" class="label-color">メールアドレス</label>
+                                @if ($errors->has('email'))
+                                    <p class="error-text">{{ $errors->first('email') }}</p>
+                                @endif
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="password" name="password" class="form-control rounded-3" id="floatingPassword" placeholder="パスワード">
+                                <label for="floatingPassword" class="label-color">パスワード</label>
+                                @if ($errors->has('password'))
+                                <p class="error-text">{{ $errors->first('password') }}</p>
+                                @endif
+                            </div>
+                            <div>
+                                <p class="p-modal">いますぐ体験を開始する</p>
+                            </div>
+                            <button class="w-100 mb-2 btn btn-custom" type="submit">エントリー</button>
+                            <small class="text-body-secondary">By clicking Entry, you agree to the terms of use.</small>
                         </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword" class="label-color">パスワード</label>
-                        </div>
-                        <div>
-                            <p class="p-modal">いますぐ体験を開始する</p>
-                        </div>
-                        <button class="w-100 mb-2 btn btn-custom" type="button">エントリー</button>
-                        <small class="text-body-secondary">By clicking Entry, you agree to the terms of use.</small>
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
             </div>
