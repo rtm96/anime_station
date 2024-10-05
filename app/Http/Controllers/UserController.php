@@ -20,6 +20,15 @@ class UserController extends Controller
     }
 
     /**
+     * アカウント編集画面表示
+     */
+    public function edit($id)
+    {
+        $user = User::find($id);
+        return view('user.edit', compact('user'));
+    }
+
+    /**
      * ユーザーアカウント更新処理
      */
     public function update(Request $request, $id)
@@ -57,7 +66,7 @@ class UserController extends Controller
     /**
      * ユーザーアカウント複数削除処理
      */
-    public function multiDelete(Request $request)
+    public function bulkDelete(Request $request)
     {
         $ids = $request->input('user_ids');
         User::whereIn('id', $ids)->delete();

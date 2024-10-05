@@ -78,7 +78,7 @@ Route::group(['middleware' => ['auth', 'can:admin']], function () {
     //ユーザーアカウント削除処理
     Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
     //ユーザーアカウント複数削除処理
-    Route::post('/users/multi-delete', [UserController::class, 'multiDelete'])->name('users.multiDelete');
+    Route::post('/users/bulk-delete', [UserController::class, 'bulkDelete'])->name('users.bulkDelete');
 
 
 });

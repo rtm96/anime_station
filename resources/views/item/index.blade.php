@@ -27,7 +27,7 @@
 
 <div class="content">
     <div class="position-absolute">
-        <img src="#" class="rounded-circle" alt="" width="200" height="200">
+        <img src="{{ Auth::user()->image}}" class="rounded-circle" alt="" width="200" height="200">
     </div>
 
     <div class="row">

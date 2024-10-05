@@ -66,7 +66,9 @@ class AccountController extends Controller
         // dd($user); // デバッグ用: 保存されたユーザーの情報を表示
 
         // ログイン画面にリダイレクト
-        return view('account.login');
+        // return view('account.login');
+        return redirect()->route('showLogin')->with('success', 'アカウントが作成されました');
+
     }
 
     /**

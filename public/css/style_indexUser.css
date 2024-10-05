@@ -4,7 +4,7 @@
 .content{
     margin: 0;
     padding: 0;
-    background-color:#b3d874;
+    /* background-color:#b3d874; */
     align-content: center;
     text-align: center;
     width: 100vw;/*画面全体に引き伸ばす*/
@@ -24,4 +24,8 @@ h3{
 .btn.btn-secondary.mt-3{
     display:block;
     margin-left: 20px;
+}
+.btn.btn-sm.btn-custom{
+    background-color: #00a3af;
+    color: white;
 }

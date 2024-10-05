@@ -38,7 +38,7 @@
         </div>
 
         <!-- ユーザー一覧テーブル -->
-        <form id="bulk-delete-form" action="#" method="POST" onsubmit="return confirmDeletion()">
+        <form id="bulk-delete-form" action="{{ route('users.bulkDelete') }}" method="POST" onsubmit="return confirmDeletion()">
             @csrf
             <div class="table-responsive col-11">
                 <table class="table table-hover table-striped table-bordered align-middle text-center">
@@ -69,7 +69,7 @@
                                 <td>{{ $user->created_at->format('Y-m-d') }}</td>
                                 <td>{{ $user->updated_at->format('Y-m-d') }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-custom">編集</a>
+                                    <a href="/users/{{ $user->id }}/edit" class="btn btn-sm btn-custom">編集</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -78,7 +78,7 @@
             </div>
 
             <!-- 選択したユーザーを削除ボタン -->
-            <button type="button" class="btn btn-secondary mt-3">選択したユーザーを削除</button>
+            <button type="submit" class="btn btn-secondary mt-3">選択したユーザーを削除</button>
         </form>
 
         <!-- ページネーション -->
@@ -86,6 +86,17 @@
             {{ $users->links('pagination::bootstrap-4') }} 
         </div>
     </div>
+
+    @if(session('success'))
+        <div class="toast position-fixed bottom-0 end-0 text-bg-primary fade show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    {{ session('success') }}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    @endif
 
     <!-- 検索機能スクリプト -->
     <script>
