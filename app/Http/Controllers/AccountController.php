@@ -67,7 +67,7 @@ class AccountController extends Controller
 
         // ログイン画面にリダイレクト
         // return view('account.login');
-        return redirect()->route('showLogin')->with('success', 'アカウントが作成されました');
+        return redirect()->route('showLogin')->with('success', 'アカウントが作成されました。');
 
     }
 
@@ -132,6 +132,6 @@ class AccountController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/')->with('success', 'ログアウトしました。');
     }
 }

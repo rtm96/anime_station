@@ -1,0 +1,162 @@
+/*
+投稿一覧画面表示
+*/
+.content{
+    margin: 0;
+    padding: 0;
+    /* background-color:#b3d874; */
+    align-content: center;
+    text-align: center;
+    width: 100vw;/*画面全体に引き伸ばす*/
+    margin-right: calc(50% - 54.2vw);/*右横の余白を無くす*/
+    margin-bottom: 100px;
+}
+h3{
+    position:absolute;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.search{
+    display: flex;
+    margin: 50px 10px 10px 10px;
+    margin-left: 300px;
+    padding: 0;
+    width: 60%;
+    text-align: center;
+}
+
+
+
+
+
+.col-2{
+    display: inline;
+}
+.row{
+    padding: 8px;
+}
+.col-11.detail{
+    text-align: justify;
+}
+.btn-secondary.page{
+    display: block;
+    width: 40px;
+    margin-right:auto;
+}
+.pagination{
+    margin: auto;
+}
+.user-name{
+    /* position: absolute; */
+    vertical-align: middle;
+    margin: 5px;
+    text-align: right;
+    padding-right: 25px;
+    font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+}
+.btn-primary.btn-sm.index{
+    display: block;
+    padding: 5px;
+    margin-right: 8px;
+    margin-bottom: 15px;
+    width: 120px;
+}
+.form-detail{
+    text-align: justify;
+}
+.pagination.justify-content-center.mt-4{
+    display: block;
+    margin-right: 0px;
+    padding-bottom: 24px;
+}
+
+
+
+
+
+
+.card-title{
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.card-detail{
+    font-size: 11px;
+    color: gray;
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+.userName{
+    font-size: 11px;
+    color: gray;
+    text-decoration: none;
+}
+.flex-taxt{
+    display: flex;
+    justify-content:space-between;
+}
+.col-md-4{
+    margin: auto;
+    margin: 10px;
+}
+.col-md-6{
+    margin: auto;
+}
+.card.mb-2{
+    margin: auto;
+    width: 640px;
+}
+.row.g-0{
+    margin: 0;
+    padding: 0;
+}
+.td-card{
+    padding: 0;
+    margin: 0;
+}
+.card-body{
+    margin-top: 10px;
+}
+th{
+    text-align: justify;
+}
+.row-word{
+    margin: auto;
+}
+.card-day1{
+    margin-left: -15px;
+    padding-top: 75px;
+}
+.card-day2{
+    margin-left: -15px;
+    padding-top: 90px;
+}
+.card-day3{
+    padding-top: 85px;
+}
+span{
+    font-size: 13px;
+}
+
+
+.card.test{
+    display: flex;
+}
+.btn.btn-sm.btn-custom{
+    width: 50px;
+    background-color: #00a3af;
+    color: white;
+}
+.card.mx-0{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+/* .strong.title{
+    display: flex;
+    margin-left: 45px;
+} */

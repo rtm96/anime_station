@@ -48,7 +48,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('users.index')->with('success', 'アカウント情報が更新されました');
+        return redirect()->route('users.index')->with('success', 'アカウント情報が更新されました。');
     }
 
     /**
@@ -59,7 +59,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('users.index')->with('success', 'アカウントが削除されました');
+        return redirect()->route('users.index')->with('success', 'アカウントが削除されました。');
     }
 
 
@@ -69,9 +69,10 @@ class UserController extends Controller
     public function bulkDelete(Request $request)
     {
         $ids = $request->input('user_ids');
+        // dd($ids);
         User::whereIn('id', $ids)->delete();
 
-        return redirect()->route('users.index')->with('success', '選択したアカウントが削除されました');
+        return redirect()->route('showLogin')->with('success', 'アカウントが削除されました。');
     }
 
 

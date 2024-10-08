@@ -1,0 +1,60 @@
+/*****************
+プロフィール編集画面
+*****************/
+.content{
+    margin: 0;
+    padding: 0;
+    /* background-color:#b3d874; */
+    align-content: center;
+    text-align: center;
+    width: 100vw;/*画面全体に引き伸ばす*/
+    margin-right: calc(50% - 54.2vw);/*右横の余白を無くす*/
+}
+.profile-box{
+    margin-left: 100px;
+}
+h3{
+    position: relative;
+    margin: 50px 50px 50px -650px;
+    padding: 0px 10px 10px 10px;
+}
+.position-absolute.start-50{
+    padding-left: 320px;
+}
+.col-2{
+    position: absolute;
+    margin-top: 220px;
+    margin-left: 650px;
+}
+.d-grid.gap-2.col-3.mx-auto{
+    display: inline;
+}
+.btn.btn-custom{
+    width: 200px;
+    background-color: #00a3af;
+    color: white;
+    border-radius: 30px 30px 30px 30px;
+    margin: 70px 150px 70px 0px;
+}
+.btn.btn-secondary.edit{
+    width: 200px;
+    border-radius: 30px 30px 30px 30px;
+    margin: 70px 150px 70px 0px;
+}
+.btn.btn-secondary.cancel{
+    width: 200px;
+    border-radius: 30px 30px 30px 30px;
+    margin: 70px 150px 70px 100px;
+}
+.form-control{
+    resize: none;
+}
+.form-floating.col-5{
+    margin-top: 20px;
+}
+.btn.btn-secondary.close{
+    border-radius: 30px 30px 30px 30px;
+    width: 160px;
+    margin-top: -150px;
+    margin-left: 460px;
+}

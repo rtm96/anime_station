@@ -34,7 +34,9 @@
         <p class="userName">{{ Auth::user()->name}}</p>
     </div>
 
-    <a href="#" class="btn btn-custom">編集</a>
+    {{-- {{route('profile.edit',$user->id)}} --}}
+    {{-- /users/{{ $user->id }}/edit --}}
+    <a href="/profile/edit" class="btn btn-custom">編集</a>
 
     <div class="follow">
         <strong>フォロー数</strong></br>

@@ -57,7 +57,7 @@
                     <tbody id="user-table-body">
                         @foreach($users as $user)
                             <tr>
-                                <td><input type="checkbox" name="user_ids[]" value="#" class="form-check-input"></td>
+                                <td><input type="checkbox" name="user_ids[]" value="{{ $user->id }}" class="form-check-input"></td>
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
@@ -85,7 +85,27 @@
         <div class="d-flex justify-content-end mt-4">
             {{ $users->links('pagination::bootstrap-4') }} 
         </div>
-    </div>
+
+        <!-- ページネーション別パターン -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+                </li>
+            </ul>
+        </nav>
+
+</div>
 
     @if(session('success'))
         <div class="toast position-fixed bottom-0 end-0 text-bg-primary fade show" role="alert" aria-live="assertive" aria-atomic="true">

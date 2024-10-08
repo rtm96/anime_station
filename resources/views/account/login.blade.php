@@ -99,6 +99,7 @@
             </div>
         </div>
 
+        {{-- トースト --}}
         @if(session('success'))
             <div class="toast position-fixed bottom-0 end-0 text-bg-primary fade show" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="d-flex">

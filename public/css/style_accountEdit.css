@@ -1,0 +1,51 @@
+/*****************
+管理者用アカウント編集画面
+******************/
+.content{
+    margin: 0;
+    padding: 0;
+    /* background-color:#b3d874; */
+    align-content: center;
+    text-align: center;
+    width: 100vw;/*画面全体に引き伸ばす*/
+    margin-right: calc(50% - 54.2vw);/*右横の余白を無くす*/
+}
+h3{
+    position:absolute;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+.btn.btn-custom.edit{
+    width: 180px;
+    background-color: #00a3af;
+    color: white;
+    border-radius: 30px 30px 30px 30px;
+    margin-left: 0px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.btn.btn-secondary.edit{
+    width: 180px;
+    border-radius: 30px 30px 30px 30px;
+    margin-left: 55px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.btn.btn-secondary.close{
+    width: 160px;
+    border-radius: 30px 30px 30px 30px;
+    margin-left: 800px;
+    margin-top: -300px;
+    margin-bottom: 0px;
+}
+.rounded-circle.edit{
+    margin-top: -150px;
+    margin-left: 50px;
+}
+.mb-3.row{
+    padding-top: 30px;
+    text-align:end;
+}
+.edit-form{
+    margin-top: 180px;
+}

@@ -7,19 +7,21 @@ use Illuminate\Http\Request;
 class VideoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 動画投稿一覧画面表示
      */
     public function index()
     {
-        //
+    
+        return view('video.index');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 動画投稿画面表示
      */
     public function create()
     {
-        //
+    
+        return view('video.create');
     }
 
     /**
