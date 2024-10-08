@@ -19,6 +19,15 @@ class VideoController extends Controller
     }
 
     /**
+     * 動画視聴画面表示
+     */
+    public function show()
+    {
+    
+        return view('video.show');
+    }
+
+    /**
      * 動画投稿画面表示
      */
     public function create()

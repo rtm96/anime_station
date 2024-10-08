@@ -1,0 +1,60 @@
+/*****************
+動画再生画面
+******************/
+.content{
+    margin: 0;
+    padding: 0;
+    /* background-color:#b3d874; */
+    align-content: center;
+    text-align: center;
+    width: 100vw;/*画面全体に引き伸ばす*/
+    margin-right: calc(50% - 54.2vw);/*右横の余白を無くす*/
+}
+video{
+    margin-top: 30px;
+}
+iframe{
+    margin-top: 30px;
+    border-radius: 15px 15px 15px 15px;
+    width: 780px;
+    height: 420px;
+}
+.btn.btn-custom{
+    border-radius: 30px 30px 30px 30px;
+    width: 160px;
+    background-color: #00a3af;
+    color: white;
+    margin: 20px 20px 20px 630px;
+}
+.btn-position{
+    margin: 0;
+    padding: 0;
+}
+.videoTitle{
+    text-align:center;
+    padding-right: 50px;
+    font-size: 22px;
+    font-weight: bold;
+}
+.user-data{
+    padding-top: 10px;
+    padding-right: 240px;
+}
+.rounded-circle.video{
+    margin-left: -800px;
+    margin-top: -10px;
+}
+.profile-name.float-start{
+    font-weight: bold;
+    margin-left: 250px;
+}
+.profile-name.float-end{
+    font-weight: bold;
+}
+.col-6.detail{
+    margin: -60px 240px 50px 200px;
+    text-align: justify;
+}
+.profile-name.float-start{
+    margin-left: 240px;
+}

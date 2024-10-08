@@ -66,7 +66,7 @@ Route::delete('/video/{id}', [VideoController::class, 'destroy'])->name('video.d
 
 
 //いいね機能実装
-//フォロー機能実装
+
 
 
 // 管理者ユーザーのみ
