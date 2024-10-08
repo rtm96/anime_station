@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\UserController;
+
 
 class ItemController extends Controller
 {
@@ -30,15 +32,12 @@ class ItemController extends Controller
     //  */
     // public function update(Request $request, $id)
     // {
-    //     $user = User::findOrFail($id);
+    //     $user = Auth::user($id);
 
     //     $user->name = $request->input('name');
-    //     // $item->detail = $request->input('detail');
+    //     $user->detail = $request->input('detail');
     //     $user->email = $request->input('email');
         
-    //     // チェックボックスが送信されていない場合は一般ユーザーに設定
-    //     $user->auth = $request->has('auth') ? 1 : 0;
-
     //     // パスワードの変更は必要な場合のみ
     //     if ($request->input('password')) {
     //         $user->password = Hash::make($request->input('password'));
@@ -46,18 +45,47 @@ class ItemController extends Controller
 
     //     $user->save();
 
-    //     return redirect()->route('users.index')->with('success', 'アカウント情報が更新されました');
+    //     return redirect()->route('profile.index')->with('success', 'アカウント情報が更新されました');
     // }
+
+    /**
+     * ユーザーアカウント更新処理
+     */
+    public function update(Request $request, User $user)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:20',
+            'email' => 'required|email|max:255|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
+            'detail'=> 'nullable|max:500',
+        ], [
+            //未入力・重複エラーメッセージ表示
+            'name.required' => 'ユーザーネームは必須です。',
+            'name.max' => '20文字以内で入力してください。',
+            'email.required' => 'メールアドレスは必須です。',
+            'email.email' => '有効なメールアドレスを入力してください。',
+            'email.max' => 'メールアドレスは最大255文字まで入力可能です。',
+            'email.regex' => 'メールアドレスの形式が正しくありません。',
+            'detail.max' => '500文字以内で入力してください。',
+        ]);
+        $validated['user_id'] = Auth::user();
+
+        dd();
+
+        $user->update($validated);
+
+        return redirect()->route('profile.index')->with('success', 'アカウント情報が更新されました');
+    }
+
 
     /**
      * ユーザーアカウント削除処理
      */
-    public function destroy()
+    public function destroy(User $user)
     {
         $user = Auth::user();
         $user->delete();
 
-        return redirect()->route('users.index')->with('success', 'アカウントが削除されました。');
+        return redirect()->route('showLogin')->with('success', 'アカウントが削除されました。');
     }
 
 

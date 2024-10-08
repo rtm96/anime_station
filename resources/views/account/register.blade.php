@@ -37,6 +37,7 @@
                     <p class="fs-3">アカウントを登録する</p>
                 </div>
 
+                {{-- 登録処理 --}}
                 <form action="{{ route('acctRegister') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="container">
@@ -83,6 +84,9 @@
                                     <div class="mb-3">
                                         <label for="icon" class="form-label">このアイコン画像に決定</label>
                                         <input id="icon" class="form-control" type="file">
+                                        @if ($errors->has('file'))
+                                        <p class="error-text">{{ $errors->first('file') }}</p>
+                                        @endif
                                     </div>
                                 </div>
 

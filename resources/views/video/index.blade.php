@@ -26,7 +26,7 @@
 @include('parts.nav')
 
 <div class="content">
-    <h3>投稿登録一覧</h3>
+    <h3>投稿動画一覧</h3>
     <div class="edit-form"> 
         {{-- 検索画面 --}}
         <div class="search">
@@ -86,7 +86,11 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <img src="/img/top.jpg" class="img-fluid rounded-start" alt="thumbnail">
+                                        <a href="#">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                                            <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                        </svg>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +99,7 @@
 
                         <td scope="row" class="row-word"><p class="card-day1"><span>2024</span><br/>10/20</p></td>
                         <td scope="row" class="row-word"><p class="card-day2">公開中</p></td>
-                        <td scope="row" class="row-word"><p class="card-day3"><a href="#" class="btn btn-sm btn-custom">編集</a></p></td>
+                        <td scope="row" class="row-word"><p class="card-day3"><a href="/video/edit" class="btn btn-sm btn-custom">編集</a></p></td>
                     </tr>
 
                     <tr>

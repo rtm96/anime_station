@@ -38,6 +38,7 @@ class AccountController extends Controller
             'name' => 'required|string|max:20|unique:users',
             'email' => 'required|email|unique:users,email|max:255|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
             'password' => 'required|min:8|max:16|confirmed|regex:/^[a-zA-Z0-9]+$/',
+            'file' => 'image',
         ],[
             //未入力・重複・超過エラーメッセージ表示
             'name.required' => 'ユーザーネームは必須です。',
@@ -53,13 +54,14 @@ class AccountController extends Controller
             'password.max' => '16文字以内で入力してください。',
             'password.confirmed' => 'パスワードが一致しません。',
             'password.regex' => 'パスワードは半角英数字のみで入力してください。',
+            'file.image' => '無効なファイル形式です。',
         ]);
 
-        // ユーザーの登録処理　※パスワードをハッシュ化　→bcrypt関数
+        // ユーザーの登録処理
         $user= User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password), 
+            'password' => bcrypt($request->password), //パスワードをハッシュ化
             'image' => $request->input('image') ?? 'default-icon.jpg',
         ]);
         

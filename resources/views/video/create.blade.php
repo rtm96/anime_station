@@ -29,43 +29,32 @@
 <div class="content">
     <h3>投稿する</h3>
     <div class="create-form"> 
+        {{-- 登録処理 --}}
+        <form method="POST" action="{{ route('video.store')}}">
+        @csrf
 
             <div class="form-floating col-5">
                 <input class="form-control" name="detail" rows="3" id="floatingTextarea"></textarea>
                 <label for="floatingInput">タイトル</label>
+                @if ($errors->has('title'))
+                    <p class="error-text">{{ $errors->first('title') }}</p>
+                @endif
             </div>
 
             <div class="form-floating col-5">
-                <textarea class="form-control" name="detail" rows="3" id="floatingTextarea" style="height: 260px"></textarea>
+                <textarea class="form-control" name="detail" rows="3" id="floatingTextarea" style="height: 200px"></textarea>
                 <label for="floatingTextarea">詳細</label>
+                @if ($errors->has('detail'))
+                    <p class="error-text">{{ $errors->first('detail') }}</p>
+                @endif
             </div>
 
-            <div class="card col-5">
-                <img src="/img/top.jpg" class="card-img-top" alt="">
-                <div class="card-body">
-                    <input class="form-control form-control-sm" id="formFileSm" type="file">
-                    <p class="card-text">ファイル名</p>
-                </div>
-            </div>
-
-            <div class="card mb-3" style="max-width: 445px;">
-                <div class="row g-0">
-        
-                    <div class="col-md-5">
-                        <div class="card-body">
-                            <h6 class="card-title">サムネイル</h6>
-                            <div class="flex-taxt">
-                            <input class="form-control form-control-sm" id="formFileSm" type="file">
-                            </div>
-                        </div>
-                    </div>
-        
-                    <div class="col-md-6">
-                        <img src="/img/top.jpg" class="img-fluid rounded-start" alt="thumbnail">
-                    </div>
-        
-                        
-                </div>
+            <div class="form-floating col-5 URL">
+                <textarea class="form-control" name="detail" rows="3" id="floatingTextarea" style="height: 100px"></textarea>
+                <label for="floatingTextarea">動画URL</label>
+                @if ($errors->has('videoURL'))
+                    <p class="error-text">{{ $errors->first('videoURL') }}</p>
+                @endif
             </div>
 
             <div class="under-box">
@@ -76,11 +65,35 @@
                         <option value="1">公開</option>
                         <option value="2">非公開</option>
                     </select>
-                </div>
-                <div>
-                    <button type="button" class="btn btn-custom">投稿する</button>
+                    @if ($errors->has('type'))
+                        <p class="error-text">{{ $errors->first('type') }}</p>
+                    @endif
                 </div>
             </div>
+
+            <div><button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#createModal">投稿する</button></div>
+
+
+            {{-- モーダル表示 --}}
+            <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="createModalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>                           
+                        <div class="modal-body">
+                        <p>この内容で登録します。よろしいですか？</p>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary cancel" data-bs-dismiss="modal">キャンセル</button>
+                        <button type="submit" class="btn btn-primary create">登録</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
 
 </div>
 

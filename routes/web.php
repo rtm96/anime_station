@@ -50,6 +50,8 @@ Route::delete('/profile/{id}',[ItemController::class, 'destroy'])->name('profile
 
 //動画投稿一覧画面表示
 Route::get('/video', [VideoController::class, 'index'])->name('video.index');
+//動画視聴画面表示
+Route::get('/video/show', [VideoController::class, 'show'])->name('video.show');
 //動画投稿画面表示
 Route::get('/video/create', [VideoController::class, 'create'])->name('video.create');
 //動画投稿登録処理

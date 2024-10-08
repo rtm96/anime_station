@@ -3,6 +3,7 @@
 ******************/
 .content{
     margin: 0;
+    margin-top: 20px;
     padding: 0;
     /* background-color:#b3d874; */
     align-content: center;
@@ -28,4 +29,7 @@ h3{
 .btn.btn-sm.btn-custom{
     background-color: #00a3af;
     color: white;
+}
+.d-flex.justify-content-end.mt-4{
+    margin: 50px 70px 50px 50px;
 }

@@ -15,7 +15,7 @@
 }
 h3{
     position: relative;
-    margin: -100px 50px 150px -820px;
+    margin: -100px 50px 150px -700px;
     padding: 0px 10px 10px 10px;
 }
 textarea{
@@ -40,8 +40,15 @@ textarea{
     background-color: #00a3af;
     color: white;
     border-radius: 30px 30px 30px 30px;
-    margin-left: 830px;
+    margin-left: 380px;
     margin-top: 10px;
+    margin-bottom: 50px;
+}
+.btn.btn-secondary{
+    width: 160px;
+    border-radius: 30px 30px 30px 30px;
+    margin-left: 830px;
+    margin-top: -115px;
     margin-bottom: 50px;
 }
 .form-label.col-4{
