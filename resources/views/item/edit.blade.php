@@ -19,7 +19,7 @@
     {{-- script --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <title>editProfile / anime_station</title>
+    <title>プロフィール編集 / anime_station</title>
 </head>
 <body>
 <div class="container">
@@ -44,7 +44,7 @@
             </div>
 
             <div class="form-floating col-5">
-                <input class="form-control" name="detail" rows="3" id="floatingInput" value="{{ old('name', $user->name )}}">
+                <input class="form-control" name="name" rows="3" id="floatingInput" value="{{ old('name', $user->name )}}">
                 <label for="floatingInput">ユーザーネーム</label>
                 @if ($errors->has('name'))
                 <p class="error-text">{{ $errors->first('name') }}</p>

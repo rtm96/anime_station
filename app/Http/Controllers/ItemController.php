@@ -53,6 +53,7 @@ class ItemController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        // dd($request);
         $validated = $request->validate([
             'name' => 'required|string|max:20',
             'email' => 'required|email|max:255|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
@@ -69,9 +70,11 @@ class ItemController extends Controller
         ]);
         $validated['user_id'] = Auth::user();
 
-        dd();
+        // dd($request);
 
-        $user->update($validated);
+        $user->update();
+
+        // dd($validated);
 
         return redirect()->route('profile.index')->with('success', 'アカウント情報が更新されました');
     }

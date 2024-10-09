@@ -72,7 +72,7 @@ class UserController extends Controller
         // dd($ids);
         User::whereIn('id', $ids)->delete();
 
-        return redirect()->route('showLogin')->with('success', 'アカウントが削除されました。');
+        return redirect()->route('users.index')->with('success', 'アカウントが削除されました。');
     }
 
 

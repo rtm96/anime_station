@@ -6,7 +6,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\LikeController;
-use App\Http\Controllers\FollowController;
 
 
 /*
@@ -64,9 +63,13 @@ Route::put('/video/{id}', [VideoController::class, 'update'])->name('video.updat
 Route::delete('/video/{id}', [VideoController::class, 'destroy'])->name('video.destroy');
 
 
-
-//いいね機能実装
-
+//いいね機能非同期実装
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    //いいね付与
+    Route::post('/items/{item:slug}/like', [LikeController::class, 'like'])->name('like');
+    //いいね取り消し
+    Route::delete('/items/{item:slug}/like', [LikeController::class, 'unlike'])->name('unlike');
+});
 
 
 // 管理者ユーザーのみ

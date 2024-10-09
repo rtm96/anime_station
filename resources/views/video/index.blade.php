@@ -56,7 +56,9 @@
                     <thead>
                     <tr>
                         <th><input type="checkbox" id="select-all"></th>
-                        <th scope="col-title">動画詳細</th>
+                        <th scope="col-title">動画詳細
+                            <span class="th-span">いいね数</span>
+                        </th>
                         <th scope="col-word">登録日</th>
                         <th scope="col-word">公開設定</th>
                         <th><div></div></th>
@@ -95,11 +97,19 @@
                                 </div>
                             </div>
 
+                            <div class="favorites">10いいね</div>
+
                         </td>
 
+                        
+
                         <td scope="row" class="row-word"><p class="card-day1"><span>2024</span><br/>10/20</p></td>
-                        <td scope="row" class="row-word"><p class="card-day2">公開中</p></td>
+                        <td scope="row" class="row-word"><p class="card-day2">公開</p></td>
                         <td scope="row" class="row-word"><p class="card-day3"><a href="/video/edit" class="btn btn-sm btn-custom">編集</a></p></td>
+
+                        @can('admin')
+                        <div class="user-name">更新者：　アドミン</div>
+                        @endcan
                     </tr>
 
                     <tr>

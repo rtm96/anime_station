@@ -35,7 +35,7 @@
             @method('PUT')
 
             <div class="form-floating col-5">
-                <input class="form-control" name="detail" rows="3" id="floatingTextarea"></textarea>
+                <input class="form-control" name="title" rows="3" id="floatingTextarea"></textarea>
                 <label for="floatingInput">タイトル</label>
                 @if ($errors->has('title'))
                     <p class="error-text">{{ $errors->first('title') }}</p>
@@ -51,7 +51,7 @@
             </div>
 
             <div class="form-floating col-5 URL">
-                <textarea class="form-control" name="detail" rows="3" id="floatingTextarea" style="height: 100px"></textarea>
+                <textarea class="form-control" name="videoURL" rows="3" id="floatingTextarea" style="height: 100px"></textarea>
                 <label for="floatingTextarea">動画URL</label>
                 @if ($errors->has('videoURL'))
                     <p class="error-text">{{ $errors->first('videoURL') }}</p>

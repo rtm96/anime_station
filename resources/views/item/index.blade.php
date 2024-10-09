@@ -37,8 +37,8 @@
     <a href="/profile/edit" class="btn btn-custom">編集</a>
 
     <div class="follow">
-        <strong>フォロー数</strong></br>
-        <strong>フォロワー数</strong>
+        <strong>総いいね数</strong></br>
+        <strong>　</strong>
     </div>
 
     <div class="col-7 detail">
@@ -67,6 +67,17 @@
     <div class="col-11">
         <hr>
     </div>
+
+    @if(session('success'))
+    <div class="toast position-fixed bottom-0 end-0 text-bg-primary fade show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                {{ session('success') }}
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    @endif
 
 </div>
 

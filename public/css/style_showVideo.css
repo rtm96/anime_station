@@ -29,6 +29,7 @@ iframe{
 .btn-position{
     margin: 0;
     padding: 0;
+    margin-left: 630px;
 }
 .videoTitle{
     text-align:center;
@@ -52,9 +53,12 @@ iframe{
     font-weight: bold;
 }
 .col-6.detail{
-    margin: -60px 240px 50px 200px;
+    margin: -10px 240px 50px 200px;
     text-align: justify;
 }
 .profile-name.float-start{
     margin-left: 240px;
+}
+.bi.bi-hand-thumbs-up{
+    font-size: 26px;
 }

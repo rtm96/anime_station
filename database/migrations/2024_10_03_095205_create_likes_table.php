@@ -14,14 +14,15 @@ return new class extends Migration
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('article_id');
+            $table->unsignedBigInteger('item_id');
             $table->timestamps();
 
             //外部キーの制約
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
 
             //user_idとarticle_idの重複する組み合わせを許可しない
-            $table->unique(['user_id', 'article_id']);
+            $table->unique(['user_id', 'item_id']);
         });
     }
 
