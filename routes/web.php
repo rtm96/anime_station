@@ -56,11 +56,11 @@ Route::group(['middleware' => 'auth'], function () {
     //動画投稿登録処理
     Route::post('/video/create', [VideoController::class,'store'])->name('video.store');
     //動画投稿編集画面表示
-    Route::get('/video/edit', [VideoController::class, 'edit'])->name('video.edit');
+    Route::get('/video/{item}/edit', [VideoController::class, 'edit'])->name('video.edit');
     //動画投稿更新処理
-    Route::put('/video/{id}', [VideoController::class, 'update'])->name('video.update');
+    Route::put('/video/{item}', [VideoController::class, 'update'])->name('video.update');
     //動画投稿削除処理
-    Route::delete('/video/{id}', [VideoController::class, 'destroy'])->name('video.destroy');
+    Route::delete('/video/{item}', [VideoController::class, 'destroy'])->name('video.destroy');
 });
 
 //いいね機能非同期実装

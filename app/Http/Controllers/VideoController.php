@@ -29,8 +29,8 @@ class VideoController extends Controller
      */
     public function show()
     {
-    
-        return view('video.show');
+        $user = Auth::user();
+        return view('video.show', compact('user'));
     }
 
     /**
@@ -74,10 +74,8 @@ class VideoController extends Controller
     /**
      * 動画投稿編集画面表示
      */
-    public function edit()
-    {
-    
-        return view('video.edit');
+    public function edit(Item $item){
+        return view('video.edit', compact('item'));
     }
 
     /**
@@ -103,9 +101,11 @@ class VideoController extends Controller
         ]);
         $validated['user_id'] = Auth::id();
 
+        // dd($request);
+
         $item->update($validated);
 
-        return redirect()->route('video.index');
+        return redirect()->route('video.index')->with('success', '投稿が更新されました。');
     }
 
 
@@ -115,6 +115,6 @@ class VideoController extends Controller
     public function destroy(Item $item)
     {
         $item->delete();
-        return redirect()->route('index');
+        return redirect()->route('video.index')->with('success', '投稿が削除されました。');
     }
 }

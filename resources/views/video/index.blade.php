@@ -55,10 +55,11 @@
                     <tr>
                         <th><input type="checkbox" id="select-all"></th>
                         <th scope="col-title">動画詳細
-                            <span class="th-span">いいね数</span>
                         </th>
+                        <th scope="col-word">いいね数</th>
                         <th scope="col-word">登録日</th>
                         <th scope="col-word">公開設定</th>
+                        <th scope="col-word">　</th>
                         <th><div></div></th>
                     </tr>
                     </thead>
@@ -76,7 +77,7 @@
                                     <div class="card-body">
                                         <h6 class="card-title">{{ $item->title }}</h6>
                                         <div class="flex-taxt">
-                                        <a href="#" class="userName">{{ $item->name }}</a>
+                                        <p class="userName">更新者：{{ $item->name }}</p>
                                         </div>
                                         <p class="card-detail">
                                             {{ $item->detail }}
@@ -93,19 +94,14 @@
                             </div>
                         </div>
 
-                                    <div class="favorites">10いいね</div>
-
                         </td>
 
                         
-
+                        <td scope="row" class="row-word"><p class="card-day2">10いいね</p></td>
                         <td scope="row" class="row-word"><p class="card-day1"><span>{{ $item->created_at->format('Y') }}</span><br/>{{ $item->created_at->format('m/d') }}</p></td>
                         <td scope="row" class="row-word"><p class="card-day2">{{ $genres[$item->type] ?? '未分類' }}</p></td>
-                        <td scope="row" class="row-word"><p class="card-day3"><a href="/video/edit" class="btn btn-sm btn-custom">編集</a></p></td>
+                        <td scope="row" class="row-word"><p class="card-day3"><a href="{{route('video.edit',$item->id)}}" class="btn btn-sm btn-custom">編集</a></p></td>
 
-                        @can('admin')
-                        <div class="user-name">更新者：　{{$item->name}}</div>
-                        @endcan
                     </tr>
 
                     </tbody>
@@ -117,12 +113,11 @@
                 <div class="modal-footer">
                     <a class="btn btn-secondary page" class="icon-link icon-link-hover" href="#" role="button">
                         ↑
-                        {{-- <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-left"></use></svg> --}}
                     </a>
 
                     <!-- ページネーションリンクの表示 -->
                     <div class="pagination justify-content-center mt-4">
-                        {{-- {{ $items->links('pagination::bootstrap-4') }} --}}
+                        {{ $items->links('pagination::bootstrap-4') }}
                     </div>
                 </div>{{-- フッター --}}
     
@@ -131,9 +126,17 @@
     </div>
 </div>
 
-
-
-
+        {{-- トースト --}}
+        @if(session('success'))
+        <div class="toast position-fixed bottom-0 end-0 text-bg-primary fade show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    {{ session('success') }}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+        @endif
 
 </body>
 </html>

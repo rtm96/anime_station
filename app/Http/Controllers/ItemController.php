@@ -18,7 +18,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view('item.index');
+        $user = Auth::user();
+        return view('item.index', compact('user'));
     }
     /**
      * プロフィール編集画面
@@ -55,6 +56,7 @@ class ItemController extends Controller
     public function update(Request $request, User $user)
     {
         // dd($request);
+        \Log::channel('daily')->info($user);
 
         $image = $request->file('image');
 
@@ -74,9 +76,10 @@ class ItemController extends Controller
             'detail.max' => '500文字以内で入力してください。',
             'image.image' => '無効なファイル形式です。',
         ]);
-        $validated['user_id'] = Auth::user();
+        $user = Auth::user();
 
         // dd($request);
+        \Log::channel('daily')->info($user);
 
         // $path = null;
 
@@ -93,6 +96,9 @@ class ItemController extends Controller
         // ユーザーの登録処理　画像が入っている場所を示す処理を追加
         $user->name = $request->name;
         if($user->email !== $request->input('email')){
+            \Log::channel('daily')->info($user->email);
+            \Log::channel('daily')->info($request->input('email'));
+
             $user->email = $request->email;
         }
         $user->detail = $request->detail;

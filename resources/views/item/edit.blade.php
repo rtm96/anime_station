@@ -61,7 +61,7 @@
             </div>
 
             <div class="form-floating col-5">
-                <textarea class="form-control" name="detail" rows="3" id="floatingTextarea" style="height: 160px"></textarea>
+                <textarea class="form-control" name="detail" rows="3" id="floatingTextarea" style="height: 160px">{{ old('detail', $user->detail )}}</textarea>
                 <label for="floatingTextarea">詳細</label>
                 @if ($errors->has('detail'))
                 <p class="error-text">{{ $errors->first('detail') }}</p>

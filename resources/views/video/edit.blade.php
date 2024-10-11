@@ -30,12 +30,12 @@
     <h3>投稿を編集する</h3>
     <div class="create-form"> 
             {{-- 商品編集・更新処理 --}}
-            <form method="POST" action="#">{{--　←追加{{ route('video.update', $item->id)}}　--}}
+            <form method="POST" action="{{ route('video.update', $item->id)}}">
             @csrf
             @method('PUT')
 
             <div class="form-floating col-5">
-                <input class="form-control" name="title" rows="3" id="floatingTextarea"></textarea>
+                <input class="form-control" name="title" rows="3" id="floatingTextarea" value="{{ old('title', $item->title )}}">
                 <label for="floatingInput">タイトル</label>
                 @if ($errors->has('title'))
                     <p class="error-text">{{ $errors->first('title') }}</p>
@@ -43,7 +43,7 @@
             </div>
 
             <div class="form-floating col-5">
-                <textarea class="form-control" name="detail" rows="3" id="floatingTextarea" style="height: 200px"></textarea>
+                <textarea class="form-control" name="detail" rows="3" id="floatingTextarea" style="height: 200px">{{ old('detail', $item->detail )}}</textarea>
                 <label for="floatingTextarea">詳細</label>
                 @if ($errors->has('detail'))
                 <p class="error-text">{{ $errors->first('detail') }}</p>
@@ -51,7 +51,7 @@
             </div>
 
             <div class="form-floating col-5 URL">
-                <textarea class="form-control" name="videoURL" rows="3" id="floatingTextarea" style="height: 100px"></textarea>
+                <textarea class="form-control" name="videoURL" rows="3" id="floatingTextarea" style="height: 100px">{{ old('videoURL', $item->videoURL )}}</textarea>
                 <label for="floatingTextarea">動画URL</label>
                 @if ($errors->has('videoURL'))
                     <p class="error-text">{{ $errors->first('videoURL') }}</p>
@@ -63,8 +63,8 @@
                     <label for="type" class="form-label col-4">ジャンル</label>
                     <select class="form-select" name="type">
                         <option value="">選択</option>
-                        <option value="1">公開</option>
-                        <option value="2">非公開</option>
+                        <option value="1" @selected(old('type', $item->type )== 1)>公開</option>
+                        <option value="2" @selected(old('type', $item->type )== 2)>非公開</option>
                     </select>
                     @if ($errors->has('type'))
                         <p class="error-text">{{ $errors->first('type') }}</p>
@@ -98,7 +98,7 @@
             </form>
             
             {{-- 削除処理 --}}
-            <form method="POST" action="#">{{--　←追加{{ route('video.destroy', $item)}}　--}}
+            <form method="POST" action="{{ route('video.destroy', $item)}}">
             @csrf
             @method('DELETE')
 
