@@ -14,8 +14,14 @@ class VideoController extends Controller
      */
     public function index()
     {
-    
-        return view('video.index');
+        $items = Item::leftJoin('users', 'users.id', '=', 'items.user_id')
+        ->select('items.*','users.name')
+        ->paginate(10);
+        $genres = [
+            '1' => '公開',
+            '2' => '非公開',
+        ];
+        return view('video.index', compact('items', 'genres'));
     }
 
     /**
@@ -41,6 +47,8 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
+
         $validated = $request->validate([
             'title'=>'required|string|max:100',
             'type'=>'required|numeric|max:10',
@@ -60,7 +68,7 @@ class VideoController extends Controller
         $validated['user_id'] = Auth::id();
         Item::create($validated);
 
-        return redirect()->route('video.index');
+        return redirect()->route('video.index')->with('success', '動画を投稿しました。');
     }
 
     /**

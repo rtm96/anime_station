@@ -21,11 +21,6 @@ h3{
 .position-absolute.start-50{
     padding-left: 320px;
 }
-.col-2{
-    position: absolute;
-    margin-top: 220px;
-    margin-left: 650px;
-}
 .d-grid.gap-2.col-3.mx-auto{
     display: inline;
 }
@@ -57,4 +52,21 @@ h3{
     width: 160px;
     margin-top: -150px;
     margin-left: 460px;
+}
+.modal-body.p-5.pt-0{
+    position: absolute;
+    margin-left: 550px;
+}
+.rounded-circle.icon{
+    margin-left: 65px;
+    margin-bottom: 10px;
+}
+.label-image{
+    margin-left: 70px;
+}
+.form-control.form-control-sm{
+    margin: 0;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: -20px;
 }

@@ -19,6 +19,10 @@
     {{-- script --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>    
+
     <title>プロフィール編集 / anime_station</title>
 </head>
 <body>
@@ -31,16 +35,21 @@
         <a class="btn btn-secondary close" href="{{ route('profile.index')}}" role="button">キャンセル</a>
 
         {{-- 更新処理 --}}
-        <form action="{{ route('profile.update', $user->id) }}" method="POST">
+        <form action="{{ route('profile.update', $user->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
-            <div class="position-absolute start-50">
-                <img src="https://github.com/mdo.png" class="rounded-circle" alt="" width="200" height="200">
-            </div>
-
-            <div class="col-2">
-                <input class="form-control form-control-sm" id="formFileSm" type="file">
+            <div class="modal-body p-5 pt-0">
+                <img id="icon_img_prv" name='image' src="{{ Auth::user()->image ? asset('/storage/img/'.Auth::user()->image) : asset('/img/default-icon.jpg')}}" class="rounded-circle icon" alt="" width="200" height="200">
+                <div class="mb-3">
+                    <label for="icon" class="label-image">このアイコン画像に決定</label>
+                    <div class="col-2 file">
+                    <input id="icon" name="image" class="form-control form-control-sm" type="file">
+                    </div>
+                    @if ($errors->has('file'))
+                    <p class="error-text">{{ $errors->first('file') }}</p>
+                    @endif
+                </div>
             </div>
 
             <div class="form-floating col-5">
@@ -94,8 +103,6 @@
                     </div>
                 </div>
             </div>
-
-
         </form>
 
             {{-- 削除処理 --}}
@@ -131,4 +138,22 @@
 </div>
 
 </body>
+
+{{-- JSscript --}}
+<script>
+    // アイコン画像プレビュー処理
+    // 画像が選択される度に、この中の処理が走る
+    $('#icon').on('change', function (ev) {
+        // このFileReaderが画像を読み込む上で大切
+        const reader = new FileReader();
+        // ファイル名を取得
+        const fileName = ev.target.files[0].name;
+        // 画像が読み込まれた時の動作を記述
+        reader.onload = function (ev) {
+            $('#icon_img_prv').attr('src', ev.target.result).css('width', '200px').css('height', '200px');
+        }
+        reader.readAsDataURL(this.files[0]);
+    })
+</script>
+
 </html>

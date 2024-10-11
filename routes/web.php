@@ -46,22 +46,22 @@ Route::put('/profile/{id}',[ItemController::class, 'update'])->name('profile.upd
 //プロフィール削除処理
 Route::delete('/profile/{id}',[ItemController::class, 'destroy'])->name('profile.destroy');
 
-
-//動画投稿一覧画面表示
-Route::get('/video', [VideoController::class, 'index'])->name('video.index');
-//動画視聴画面表示
-Route::get('/video/show', [VideoController::class, 'show'])->name('video.show');
-//動画投稿画面表示
-Route::get('/video/create', [VideoController::class, 'create'])->name('video.create');
-//動画投稿登録処理
-Route::post('/video/create', [VideoController::class,'store'])->name('video.store');
-//動画投稿編集画面表示
-Route::get('/video/edit', [VideoController::class, 'edit'])->name('video.edit');
-//動画投稿更新処理
-Route::put('/video/{id}', [VideoController::class, 'update'])->name('video.update');
-//動画投稿削除処理
-Route::delete('/video/{id}', [VideoController::class, 'destroy'])->name('video.destroy');
-
+Route::group(['middleware' => 'auth'], function () {
+    //動画投稿一覧画面表示
+    Route::get('/video', [VideoController::class, 'index'])->name('video.index');
+    //動画視聴画面表示
+    Route::get('/video/show', [VideoController::class, 'show'])->name('video.show');
+    //動画投稿画面表示
+    Route::get('/video/create', [VideoController::class, 'create'])->name('video.create');
+    //動画投稿登録処理
+    Route::post('/video/create', [VideoController::class,'store'])->name('video.store');
+    //動画投稿編集画面表示
+    Route::get('/video/edit', [VideoController::class, 'edit'])->name('video.edit');
+    //動画投稿更新処理
+    Route::put('/video/{id}', [VideoController::class, 'update'])->name('video.update');
+    //動画投稿削除処理
+    Route::delete('/video/{id}', [VideoController::class, 'destroy'])->name('video.destroy');
+});
 
 //いいね機能非同期実装
 Route::group(['middleware' => ['auth:sanctum']], function () {

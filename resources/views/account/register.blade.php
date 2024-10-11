@@ -80,10 +80,10 @@
                                 </div>
 
                                 <div class="modal-body p-5 pt-0">
-                                    <img id="icon_img_prv" src="{{ asset('/img/default-icon.jpg') }}" class="rounded-circle" alt="" width="200" height="200">
+                                    <img id="icon_img_prv" name='image' src="{{ asset('/img/default-icon.jpg') }}" class="rounded-circle" alt="" width="200" height="200">
                                     <div class="mb-3">
                                         <label for="icon" class="form-label">このアイコン画像に決定</label>
-                                        <input id="icon" class="form-control" type="file">
+                                        <input id="icon" name="image" class="form-control" type="file">
                                         @if ($errors->has('file'))
                                         <p class="error-text">{{ $errors->first('file') }}</p>
                                         @endif

@@ -48,10 +48,13 @@ h3{
 }
 .user-name{
     position: absolute;
-    vertical-align: middle;
+    /*vertical-align: middle;
     margin: 5px;
-    padding-top: 210px;
-    padding-left: 725px;
+    padding-top: 180px;
+    padding-left: 610px; */
+    right: 0;
+    margin-right: 250px;
+    margin-top: 180px;
 }
 .btn-primary.btn-sm.index{
     display: block;
@@ -132,14 +135,14 @@ th{
 }
 .card-day1{
     margin-left: -15px;
-    padding-top: 75px;
+    padding-top: 60px;
 }
 .card-day2{
     margin-left: -15px;
-    padding-top: 90px;
+    padding-top: 75px;
 }
 .card-day3{
-    padding-top: 85px;
+    padding-top: 70px;
 }
 span{
     font-size: 13px;
@@ -161,6 +164,7 @@ span{
 .bi.bi-play-fill{
     font-size: 100px;
     color: #00a3af;
+    margin: -3px;
 }
 .th-span{
     font-size: 16px;

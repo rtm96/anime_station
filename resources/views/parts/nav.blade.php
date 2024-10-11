@@ -166,7 +166,7 @@
 
                 <div class="dropdown">
                     <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none">
-                    <img src="{{ Auth::user()->image}}" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <img src="{{ Auth::user()->image ? asset('/storage/img/'.Auth::user()->image) : asset('/img/default-icon.jpg')}}" alt="" width="32" height="32" class="rounded-circle me-2">
                     <strong class="profile-name">{{ Auth::user()->name}}</strong>
                     </a>
                 </div>

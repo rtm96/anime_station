@@ -27,7 +27,8 @@
 
 <div class="content">
     <div class="position-absolute">
-        <img src="{{ Auth::user()->image}}" class="rounded-circle" alt="" width="200" height="200">
+        {{-- ファイルが選択される時はストレージからの画像を表示、選択されない時はpublic配下のimgファイルのデフォルトを表示：三項演算子 --}}
+        <img src="{{ Auth::user()->image ? asset('/storage/img/'.Auth::user()->image) : asset('/img/default-icon.jpg')}}" class="rounded-circle" alt="" width="200" height="200">
     </div>
 
     <div class="row">

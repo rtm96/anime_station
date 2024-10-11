@@ -43,13 +43,11 @@
         {{-- カード --}}
         <div class="card">
             <div class="card-header">
-                {{-- <div class="col-2">テーマ</div>
-                <div class="col-2">テーマ</div> --}}
-                    <thead>
-                        <strong class="strong title">Vboard</strong>
-                    </thead>
-
+                <thead>
+                    <strong class="strong title">Vboard</strong>
+                </thead>
             </div>
+
             <div class="card-body">
             
                 <table class="table">
@@ -65,156 +63,53 @@
                     </tr>
                     </thead>
 
+                    @foreach ($items as $item)
                     <tbody>
                     <tr>
-                        <th><input type="checkbox"></th>
+                        <td><input type="checkbox" name="item_ids[]" value="{{ $item->id }}" class="form-check-input"></td>
                         <td class="td-card ms-0">
 
-                            {{-- カード履歴 --}}
-                            <div class="card mx-0" style="max-width: 500px;">
-                                <div class="row g-0">
-                                    <div class="col-md-5">
-                                        <div class="card-body">
-                                            <h6 class="card-title">ＢＡＣＫ ＴＯ ＴＨＥ ８０ｓ // calm vaporwave ~ ambient dreamwave mix</h6>
-                                            <div class="flex-taxt">
-                                            <a href="#" class="userName">ユーザーネーム</a>
-                                            </div>
-                                            <p class="card-detail">
-                                                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
-                                                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
-                                                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
-                                                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
-                                            </p>
+                        {{-- カード履歴 --}}
+                        <div class="card mx-0" style="max-width: 500px;">
+                            <div class="row g-0">
+                                <div class="col-md-5">
+                                    <div class="card-body">
+                                        <h6 class="card-title">{{ $item->title }}</h6>
+                                        <div class="flex-taxt">
+                                        <a href="#" class="userName">{{ $item->name }}</a>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <a href="{{ route('video.show') }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
-                                            <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
-                                        </svg>
-                                        </a>
+                                        <p class="card-detail">
+                                            {{ $item->detail }}
+                                        </p>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <a href="{{ route('video.show') }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                                        <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                    </svg>
+                                    </a>
+                                </div>
                             </div>
+                        </div>
 
-                            <div class="favorites">10いいね</div>
+                                    <div class="favorites">10いいね</div>
 
                         </td>
 
                         
 
-                        <td scope="row" class="row-word"><p class="card-day1"><span>2024</span><br/>10/20</p></td>
-                        <td scope="row" class="row-word"><p class="card-day2">公開</p></td>
+                        <td scope="row" class="row-word"><p class="card-day1"><span>{{ $item->created_at->format('Y') }}</span><br/>{{ $item->created_at->format('m/d') }}</p></td>
+                        <td scope="row" class="row-word"><p class="card-day2">{{ $genres[$item->type] ?? '未分類' }}</p></td>
                         <td scope="row" class="row-word"><p class="card-day3"><a href="/video/edit" class="btn btn-sm btn-custom">編集</a></p></td>
 
                         @can('admin')
-                        <div class="user-name">更新者：　アドミン</div>
+                        <div class="user-name">更新者：　{{$item->name}}</div>
                         @endcan
                     </tr>
 
-                    <tr>
-                        <th><input type="checkbox"></th>
-                        <td class="td-card ms-0">
-
-                            {{-- カード履歴 --}}
-                            <div class="card mx-0" style="max-width: 500px;">
-                                <div class="row g-0">
-                                    <div class="col-md-5">
-                                        <div class="card-body">
-                                            <h6 class="card-title">ＢＡＣＫ ＴＯ ＴＨＥ ８０ｓ２ // calm vaporwave ~ ambient dreamwave mix</h6>
-                                            <div class="flex-taxt">
-                                            <a href="#" class="userName">ユーザーネーム</a>
-                                            </div>
-                                            <p class="card-detail">
-                                                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
-                                                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
-                                                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
-                                                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <img src="/img/top.jpg" class="img-fluid rounded-start" alt="thumbnail">
-                                    </div>
-                                </div>
-                            </div>
-
-                        </td>
-
-                        <td scope="row" class="row-word"><p class="card-day1"><span>2024</span><br/>10/21</p></td>
-                        <td scope="row" class="row-word"><p class="card-day2">非公開</p></td>
-                        <td scope="row" class="row-word"><p class="card-day3"><a href="#" class="btn btn-sm btn-custom">編集</a></p></td>
-                    </tr>
-
-                    <tr>
-                        <th><input type="checkbox"></th>
-                        <td class="td-card ms-0">
-
-                            {{-- カード履歴 --}}
-                            <div class="card mx-0" style="max-width: 500px;">
-                                <div class="row g-0">
-                                    <div class="col-md-5">
-                                        <div class="card-body">
-                                            <h6 class="card-title">ＢＡＣＫ ＴＯ ＴＨＥ ８０ｓ２ // calm vaporwave ~ ambient dreamwave mix</h6>
-                                            <div class="flex-taxt">
-                                            <a href="#" class="userName">ユーザーネーム</a>
-                                            </div>
-                                            <p class="card-detail">
-                                                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
-                                                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
-                                                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
-                                                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <img src="/img/top.jpg" class="img-fluid rounded-start" alt="thumbnail">
-                                    </div>
-                                </div>
-                            </div>
-
-                        </td>
-
-                        <td scope="row" class="row-word"><p class="card-day1"><span>2024</span><br/>10/21</p></td>
-                        <td scope="row" class="row-word"><p class="card-day2">非公開</p></td>
-                        <td scope="row" class="row-word"><p class="card-day3"><a href="#" class="btn btn-sm btn-custom">編集</a></p></td>
-                    </tr>
-
-                    <tr>
-                        <th><input type="checkbox"></th>
-                        <td class="td-card ms-0">
-
-                            {{-- カード履歴 --}}
-                            <div class="card mx-0" style="max-width: 500px;">
-                                <div class="row g-0">
-                                    <div class="col-md-5">
-                                        <div class="card-body">
-                                            <h6 class="card-title">ＢＡＣＫ ＴＯ ＴＨＥ ８０ｓ２ // calm vaporwave ~ ambient dreamwave mix</h6>
-                                            <div class="flex-taxt">
-                                            <a href="#" class="userName">ユーザーネーム</a>
-                                            </div>
-                                            <p class="card-detail">
-                                                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
-                                                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
-                                                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
-                                                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <img src="/img/top.jpg" class="img-fluid rounded-start" alt="thumbnail">
-                                    </div>
-                                </div>
-                            </div>
-
-                        </td>
-
-                        <td scope="row" class="row-word"><p class="card-day1"><span>2024</span><br/>10/21</p></td>
-                        <td scope="row" class="row-word"><p class="card-day2">非公開</p></td>
-                        <td scope="row" class="row-word"><p class="card-day3"><a href="#" class="btn btn-sm btn-custom">編集</a></p></td>
-                    </tr>
-
                     </tbody>
+                    @endforeach
                 </table>
 
 
