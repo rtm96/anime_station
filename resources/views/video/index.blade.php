@@ -57,7 +57,7 @@
                         <th scope="col-title">動画詳細
                         </th>
                         <th scope="col-word">いいね数</th>
-                        <th scope="col-word">登録日</th>
+                        <th scope="col-word">更新日</th>
                         <th scope="col-word">公開設定</th>
                         <th scope="col-word">　</th>
                         <th><div></div></th>
@@ -85,7 +85,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="{{ route('video.show') }}">
+                                    <a href="{{ route('video.show', ['item' => $item] ) }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
                                         <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
                                     </svg>
@@ -98,9 +98,20 @@
 
                         
                         <td scope="row" class="row-word"><p class="card-day2">10いいね</p></td>
-                        <td scope="row" class="row-word"><p class="card-day1"><span>{{ $item->created_at->format('Y') }}</span><br/>{{ $item->created_at->format('m/d') }}</p></td>
+                        <td scope="row" class="row-word"><p class="card-day1"><span>{{ $item->updated_at->format('Y') }}</span><br/>{{ $item->updated_at->format('m/d') }}</p></td>
                         <td scope="row" class="row-word"><p class="card-day2">{{ $genres[$item->type] ?? '未分類' }}</p></td>
-                        <td scope="row" class="row-word"><p class="card-day3"><a href="{{route('video.edit',$item->id)}}" class="btn btn-sm btn-custom">編集</a></p></td>
+                        <td scope="row" class="row-word"><p class="card-day3">
+                            {{-- @can('admin') --}}
+                            @if(($user->auth === 0 || 1)):
+                            <a href="{{route('video.edit',$item->id)}}" class="btn btn-sm btn-custom">
+                                編集
+                            </a>
+                            @elseif(($item !== $user_id)):
+                                空を表示
+                            @endif
+                            </p>
+                            {{-- @endcan --}}
+                        </td>
 
                     </tr>
 

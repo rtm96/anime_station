@@ -24,22 +24,47 @@ h3{
 .d-grid.gap-2.col-3.mx-auto{
     display: inline;
 }
-.btn.btn-custom{
+.btn.btn-custom.edit{
     width: 200px;
     background-color: #00a3af;
     color: white;
     border-radius: 30px 30px 30px 30px;
-    margin: 70px 150px 70px 0px;
+    margin: 50px 500px 50px 0px;
 }
 .btn.btn-secondary.edit{
     width: 200px;
     border-radius: 30px 30px 30px 30px;
-    margin: 70px 150px 70px 0px;
+    margin: -115px 0px 50px 200px;
 }
 .btn.btn-secondary.cancel{
     width: 200px;
     border-radius: 30px 30px 30px 30px;
     margin: 70px 150px 70px 100px;
+}
+.modal-footer{
+    padding-top: 30px;
+    margin-bottom: 30px;
+}
+.btn.btn-primary.update{
+    border-radius: 30px 30px 30px 30px;
+    width: 160px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin: auto;
+}
+.btn.btn-danger.delete{
+    border-radius: 30px 30px 30px 30px;
+    width: 160px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin: auto;
+}
+.btn.btn-secondary.modal-cancel{
+    border-radius: 30px 30px 30px 30px;
+    width: 160px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin: auto;
 }
 .form-control{
     resize: none;
@@ -69,4 +94,8 @@ h3{
     position: absolute;
     margin-top: 10px;
     margin-left: -20px;
+}
+.error-text{
+    color: red;
+    text-align: justify;
 }

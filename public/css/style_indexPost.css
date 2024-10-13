@@ -90,13 +90,14 @@ h3{
     text-align: justify;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     overflow: hidden;
 }
 .userName{
     font-size: 11px;
     color: gray;
     text-decoration: none;
+    margin-bottom: 5px;
 }
 .flex-taxt{
     display: flex;

@@ -91,7 +91,7 @@
                                 </div>
 
                                 <div>
-                                    <button class="w-50 btn btn-custom" type="submit">アカウント登録</button>
+                                    <button class="w-50 btn btn-custom" type="button" data-bs-toggle="modal" data-bs-target="#updateModal">アカウント登録</button>
                                     <br/>
                                     <small class="text-body-secondary">By clicking Entry, you agree to the terms of use.</small>
                                 </div>
@@ -99,6 +99,25 @@
                         </div>
                     </div></div>
                 </div>
+
+                        {{-- モーダル表示・更新 --}}
+                    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModal" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="updateModalLabel"></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>                           
+                                <div class="modal-body">
+                                <p>　　この内容でアカウントを登録します。よろしいですか？</p>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary cancel" data-bs-dismiss="modal">キャンセル</button></td>
+                                <button type="submit" class="btn btn-primary update">登録</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </form>
 
                 <div class="text-end mt-3">

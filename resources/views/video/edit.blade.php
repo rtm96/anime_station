@@ -29,6 +29,7 @@
 <div class="content">
     <h3>投稿を編集する</h3>
     <div class="create-form"> 
+        <a class="btn btn-secondary close" href="{{ route('video.index')}}" role="button">キャンセル</a>
             {{-- 商品編集・更新処理 --}}
             <form method="POST" action="{{ route('video.update', $item->id)}}">
             @csrf
@@ -66,9 +67,11 @@
                         <option value="1" @selected(old('type', $item->type )== 1)>公開</option>
                         <option value="2" @selected(old('type', $item->type )== 2)>非公開</option>
                     </select>
+                    <div class="error-position">
                     @if ($errors->has('type'))
                         <p class="error-text">{{ $errors->first('type') }}</p>
                     @endif
+                    </div>
                 </div>
             </div>
 

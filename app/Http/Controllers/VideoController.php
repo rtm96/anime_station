@@ -27,10 +27,10 @@ class VideoController extends Controller
     /**
      * 動画視聴画面表示
      */
-    public function show()
+    public function show(Item $item)
     {
-        $user = Auth::user();
-        return view('video.show', compact('user'));
+        // \Log::channel('daily')->info($item);
+        return view('video.show',  ['item' => $item]);
     }
 
     /**

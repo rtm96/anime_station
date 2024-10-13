@@ -65,9 +65,11 @@
                         <option value="1" @selected(old('type')== 1)>公開</option>
                         <option value="2" @selected(old('type')== 2)>非公開</option>
                     </select>
+                    <div class="error-position">
                     @if ($errors->has('type'))
                         <p class="error-text">{{ $errors->first('type') }}</p>
                     @endif
+                    </div>
                 </div>
             </div>
 

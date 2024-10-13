@@ -26,18 +26,18 @@
 @include('parts.nav')
 
     <div class="content"> 
+    {{-- @foreach ($items as $item) --}}
 
-
-        {{-- <video width="780" height="420" src="video.mp4" controls autoplay muted allowfullscreen></video> --}}
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/GtYV_F71yeE?si=fK7QIV9f3aaHwnT1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        {{-- <iframe width="560" height="315" src="https://www.youtube.com/embed/GtYV_F71yeE?si=fK7QIV9f3aaHwnT1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> --}}
+        <iframe width="560" height="315" src="{{ $item->videoURL }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
         <div class="videoTitle">
-            ＢＡＣＫ ＴＯ ＴＨＥ ８０ｓ // calm vaporwave ~ ambient dreamwave mix
+            {{ $item->title }}
         </div>
 
         <div class="user-data">
-            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle video">
-            <strong class="profile-name float-start">ユーザーネーム</strong>
+            <img src="{{ Auth::user()->image ? asset('/storage/img/'.Auth::user()->image) : asset('/img/default-icon.jpg')}}" alt="" width="32" height="32" class="rounded-circle video">
+            <strong class="profile-name float-start">{{ Auth::user()->name}}</strong>
             <strong class="profile-name float-end">いいね</strong>
         </div>
 
@@ -49,24 +49,13 @@
 
         <div class="col-6 detail">
             <div data-bs-spy="scroll" data-bs-target="#list" data-bs-smooth-scroll="true" tabindex="0" data-bs-root-margin="0px 0px -40%" class="scrollspy-example bg-body-tertiary p-2 rounded-2" style="height: 150px">
-            <p>
-                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、
-                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、
-                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容 
-                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容 
-                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、
-                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、
-                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容 
-                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容 
-                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、
-                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、
-                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容 
-                詳細内容、詳細内容、詳細内容、詳細内容、詳細内容、詳細内容
+            <p class="text-detail">
+                {{ $item->detail }}
             </p>
             </div>
         </div>
 
-
+    {{-- @endforeach --}}
     </div>
 </div>
 

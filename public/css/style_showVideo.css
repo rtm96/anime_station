@@ -32,7 +32,8 @@ iframe{
     margin-left: 630px;
 }
 .videoTitle{
-    text-align:center;
+    text-align: justify;
+    margin-left: 200px;
     padding-right: 50px;
     font-size: 22px;
     font-weight: bold;
@@ -42,7 +43,7 @@ iframe{
     padding-right: 240px;
 }
 .rounded-circle.video{
-    margin-left: -800px;
+    margin-left: -750px;
     margin-top: -10px;
 }
 .profile-name.float-start{
@@ -61,4 +62,8 @@ iframe{
 }
 .bi.bi-hand-thumbs-up{
     font-size: 26px;
+}
+.text-detail{
+    white-space: pre-line;
+    margin-top: -20px;
 }

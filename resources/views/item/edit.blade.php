@@ -81,7 +81,7 @@
                 <label for="floatingInput">パスワード変更の際に入力</label>
             </div>
 
-            <div class="footer">
+            <div class="button-footer">
                 <button type="button" class="btn btn-custom edit" data-bs-toggle="modal" data-bs-target="#updateModal">更新する</button>
             </div>
 
@@ -97,7 +97,7 @@
                         <p>この内容で登録を更新します。よろしいですか？</p>
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary cancel" data-bs-dismiss="modal">キャンセル</button>
+                        <button type="button" class="btn btn-secondary modal-cancel" data-bs-dismiss="modal">キャンセル</button>
                         <button type="submit" class="btn btn-primary update">更新</button>
                         </div>
                     </div>
@@ -125,7 +125,7 @@
                         <p>本当に削除してよろしいですか？</p>
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary cancel" data-bs-dismiss="modal">キャンセル</button>
+                        <button type="button" class="btn btn-secondary modal-cancel" data-bs-dismiss="modal">キャンセル</button>
                         <button type="submit" class="btn btn-danger delete">削除</button>
                         </div>
                     </div>

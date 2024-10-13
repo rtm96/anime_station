@@ -51,4 +51,31 @@ textarea{
     margin-left: 600px;
     margin-top: -320px;
 }
+.btn.btn-primary.create{
+    border-radius: 30px 30px 30px 30px;
+    width: 160px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin: auto;
+}
+.btn.btn-secondary.cancel{
+    border-radius: 30px 30px 30px 30px;
+    width: 160px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin: auto;
+}
+.modal-footer{
+    padding-top: 30px;
+    margin-bottom: 30px;
+}
+.error-text{
+    color: red;
+    text-align: justify;
+}
+.error-position{
+    position: absolute;
+    margin-top: 40px;
+    margin-left: 16px;
+}
 
