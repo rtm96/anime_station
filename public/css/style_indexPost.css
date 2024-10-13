@@ -17,12 +17,12 @@ h3{
     margin-left: 50px;
 }
 .search{
-    display: flex;
+    /* display: flex; */
     margin: 50px 10px 10px 10px;
-    margin-left: 300px;
+    margin-left: 270px;
     padding: 0;
     width: 60%;
-    text-align: center;
+    /* text-align: center; */
 }
 
 
@@ -175,4 +175,9 @@ span{
     margin-left: 570px;
     margin-top: -110px;
     position: absolute;
+}
+.btn.btn-outline-secondary{
+    margin-right: -420px;
+    margin-left: 425px;
+    margin-top: -67px;
 }

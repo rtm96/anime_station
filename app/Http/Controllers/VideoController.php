@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 
 class VideoController extends Controller
@@ -12,16 +13,27 @@ class VideoController extends Controller
     /**
      * 動画投稿一覧画面表示
      */
-    public function index()
+    public function index(Request $request)
     {
-        $items = Item::leftJoin('users', 'users.id', '=', 'items.user_id')
-        ->select('items.*','users.name')
-        ->paginate(10);
         $genres = [
             '1' => '公開',
             '2' => '非公開',
         ];
-        return view('video.index', compact('items', 'genres'));
+        $user = Auth::user();//追加
+        $query = Item::leftJoin('users', 'users.id', '=', 'items.user_id')
+        ->select('items.*','users.name');
+
+        // 検索機能追加
+        $keyword = $request->input('keyword');
+
+        if(!empty($keyword)) {
+            $query->where('title', 'LIKE', "%{$keyword}%")
+                ->orWhere('users.name', 'LIKE', "%{$keyword}%");
+        }
+
+        $items = $query->paginate(10);
+
+        return view('video.index', compact('user','items', 'genres','keyword'));
     }
 
     /**
@@ -75,6 +87,10 @@ class VideoController extends Controller
      * 動画投稿編集画面表示
      */
     public function edit(Item $item){
+        //ログインユーザーのみアクセス可能
+        if (! Gate::allows('admin-or-myItem', $item)) {
+            abort(403);
+        }
         return view('video.edit', compact('item'));
     }
 

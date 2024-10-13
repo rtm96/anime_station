@@ -28,16 +28,21 @@
 <div class="content">
     <h3>投稿動画一覧</h3>
     <div class="edit-form"> 
-        {{-- 検索画面 --}}
+
+        {{-- 検索機能 --}}
+        <form action="{{ route('video.index') }}" method="GET">
         <div class="search">
-            <input class="form-control me-2" type="search" placeholder="検索" aria-label="Search">
+            <input class="form-control me-2" name="keyword" type="search" placeholder="検索" aria-label="Search">
             
             <button class="btn btn-outline-secondary" type="submit">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                 </svg>
             </button>
+            {{-- クリア機能リンク --}}
+            <a href="{{ url('/video') }}" class="btn btn-outline-secondary">クリア</a>
         </div>
+        </form>
 
     <div class="row justify-content-center"> <div class="col-md-11">
         {{-- カード --}}
@@ -53,9 +58,9 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th><input type="checkbox" id="select-all"></th>
-                        <th scope="col-title">動画詳細
-                        </th>
+                        {{-- <th><input type="checkbox" id="select-all"></th> --}}
+                        <th>　</th>
+                        <th scope="col-title">動画詳細</th>
                         <th scope="col-word">いいね数</th>
                         <th scope="col-word">更新日</th>
                         <th scope="col-word">公開設定</th>
@@ -67,7 +72,8 @@
                     @foreach ($items as $item)
                     <tbody>
                     <tr>
-                        <td><input type="checkbox" name="item_ids[]" value="{{ $item->id }}" class="form-check-input"></td>
+                        {{-- <td><input type="checkbox" name="item_ids[]" value="{{ $item->id }}" class="form-check-input"></td> --}}
+                        <td>　</td>
                         <td class="td-card ms-0">
 
                         {{-- カード履歴 --}}
@@ -101,16 +107,15 @@
                         <td scope="row" class="row-word"><p class="card-day1"><span>{{ $item->updated_at->format('Y') }}</span><br/>{{ $item->updated_at->format('m/d') }}</p></td>
                         <td scope="row" class="row-word"><p class="card-day2">{{ $genres[$item->type] ?? '未分類' }}</p></td>
                         <td scope="row" class="row-word"><p class="card-day3">
-                            {{-- @can('admin') --}}
-                            @if(($user->auth === 0 || 1)):
+                            {{-- 管理ユーザーかつログインしたユーザーのみ投稿編集できる機能 --}}
+                            {{-- @can('admin-or-myItem') --}}
+                            @if(($user->auth === 0 && $item->user_id === $user->id) || $user->auth === 1)
                             <a href="{{route('video.edit',$item->id)}}" class="btn btn-sm btn-custom">
                                 編集
                             </a>
-                            @elseif(($item !== $user_id)):
-                                空を表示
                             @endif
-                            </p>
                             {{-- @endcan --}}
+                            </p>
                         </td>
 
                     </tr>
