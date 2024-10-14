@@ -8,17 +8,6 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\LikeController;
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -31,7 +20,7 @@ Route::get('/register', [AccountController::class, 'register'])->name('register'
 Route::post('/acctRegister', [AccountController::class, 'acctRegister'])->name('acctRegister');
 //アイコン選択
 Route::post('/icon',[AccountController::class, 'icon'])->name('icon');
-// ログインチェック
+// ログイン機能
 Route::post('/login', [AccountController::class, 'login'])->name('login');
 // ログアウト機能
 Route::get('/logout', [AccountController::class, 'logout'])->name('logout');
@@ -56,7 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     //動画投稿登録処理
     Route::post('/video/create', [VideoController::class,'store'])->name('video.store');
     //動画投稿編集画面表示
-    Route::get('/video/{item}/edit', [VideoController::class, 'edit'])->name('video.edit');
+    Route::get('/video/{item_id}/edit', [VideoController::class, 'edit'])->name('video.edit');
     //動画投稿更新処理
     Route::put('/video/{item}', [VideoController::class, 'update'])->name('video.update');
     //動画投稿削除処理
@@ -66,9 +55,9 @@ Route::group(['middleware' => 'auth'], function () {
 //いいね機能非同期実装
 Route::group(['middleware' => ['auth:sanctum']], function () {
     //いいね付与
-    Route::post('/items/{item:slug}/like', [LikeController::class, 'like'])->name('like');
+    Route::post('/like/{itemId}',[LikeController::class,'store'])->name('like');
     //いいね取り消し
-    Route::delete('/items/{item:slug}/like', [LikeController::class, 'unlike'])->name('unlike');
+    Route::post('/unlike/{itemId}',[LikeController::class,'destroy'])->name('unlike');
 });
 
 

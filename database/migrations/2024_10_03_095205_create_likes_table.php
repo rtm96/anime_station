@@ -18,11 +18,11 @@ return new class extends Migration
             $table->timestamps();
 
             //外部キーの制約
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
 
-            //user_idとarticle_idの重複する組み合わせを許可しない
-            $table->unique(['user_id', 'item_id']);
+            //user_idとitem_idの重複する組み合わせを許可しない
+            // $table->unique(['user_id', 'item_id']);
         });
     }
 

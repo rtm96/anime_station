@@ -41,8 +41,14 @@ class VideoController extends Controller
      */
     public function show(Item $item)
     {
+
+        // $user = Auth::user();
+        // $item = Item::find($item_id);
+        $user = $item->user; // 各動画がユーザーに紐づいていることを想定
+
         // \Log::channel('daily')->info($item);
-        return view('video.show',  ['item' => $item]);
+        // return view('video.show',  compact('user','item'));
+        return view('video.show', compact('item', 'user'));
     }
 
     /**
@@ -50,8 +56,9 @@ class VideoController extends Controller
      */
     public function create()
     {
-    
-        return view('video.create');
+
+        $user = Auth::user();
+        return view('video.create', compact('user'));
     }
 
     /**
@@ -86,12 +93,16 @@ class VideoController extends Controller
     /**
      * 動画投稿編集画面表示
      */
-    public function edit(Item $item){
+    public function edit($item_id){
+
+        $user = Auth::user();
+        $item = Item::find($item_id);
+        
         //ログインユーザーのみアクセス可能
         if (! Gate::allows('admin-or-myItem', $item)) {
             abort(403);
         }
-        return view('video.edit', compact('item'));
+        return view('video.edit', compact('user','item'));
     }
 
     /**

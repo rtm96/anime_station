@@ -40,7 +40,12 @@
         @method('PUT')
 
             <div class="modal-body p-5 pt-0">
-                <img id="icon_img_prv" name='image' src="{{ Auth::user()->image ? asset('/storage/img/'.Auth::user()->image) : asset('/img/default-icon.jpg')}}" class="rounded-circle icon" alt="" width="200" height="200">
+                {{-- <img id="icon_img_prv" name='image' src="{{ Auth::user()->image ? asset('/storage/img/'.Auth::user()->image) : asset('/img/default-icon.jpg')}}" class="rounded-circle icon" alt="" width="200" height="200"> --}}
+                @if($user->image)
+                <img id="icon_img_prv" name='image' src="data:image/png;base64,{{$user->image }}" class="rounded-circle icon" alt="" width="200" height="200">
+                @else
+                <img id="icon_img_prv" name='image' src="{{ asset('/img/default-icon.jpg') }}" class="rounded-circle icon" alt="" width="200" height="200">
+                @endif
                 <div class="mb-3">
                     <label for="icon" class="label-image">このアイコン画像に決定</label>
                     <div class="col-2 file">

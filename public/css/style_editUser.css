@@ -60,3 +60,28 @@ h3{
 .form-check-label{
     margin-left: 20px;
 }
+.modal-footer{
+    padding-top: 30px;
+    margin-bottom: 30px;
+}
+.btn.btn-primary.update{
+    border-radius: 30px 30px 30px 30px;
+    width: 160px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin: auto;
+}
+.btn.btn-danger.delete{
+    border-radius: 30px 30px 30px 30px;
+    width: 160px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin: auto;
+}
+.btn.btn-secondary.cancel{
+    border-radius: 30px 30px 30px 30px;
+    width: 160px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin: auto;
+}

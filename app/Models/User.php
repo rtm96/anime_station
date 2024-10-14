@@ -45,10 +45,35 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function item() {
-        return $this->hasMany(Item::class);
+    //多対多のリレーション
+    public function likes()
+    {
+        return $this->belongsToMany('App\Models\Item','likes','user_id','item_id')->withTimestamps();
     }
-    public function like() {
-        return $this->hasMany(Like::class);
+
+     //この投稿に対して既にlikeしたかどうかを判別する
+    public function isLike($itemId)
+    {
+    return $this->likes()->where('item_id',$itemId)->exists();
+    }
+
+    //isLikeを使って、既にlikeしたか確認したあと、いいねする（重複させない）
+    public function like($itemId)
+    {
+        if($this->isLike($itemId)){
+        //もし既に「いいね」していたら何もしない
+        } else {
+        $this->likes()->attach($itemId);
+        }
+    }
+
+    //isLikeを使って、既にlikeしたか確認して、もししていたら解除する
+    public function unlike($itemId)
+    {
+        if($this->isLike($itemId)){
+            //もし既に「いいね」していたら消す
+            $this->likes()->detach($itemId);
+        } else {
+        }
     }
 }

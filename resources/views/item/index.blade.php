@@ -28,8 +28,12 @@
 {{-- @foreach ($users as $user) --}}
 <div class="content">
     <div class="position-absolute">
-        {{-- ファイルが選択される時はストレージからの画像を表示、選択されない時はpublic配下のimgファイルのデフォルトを表示：三項演算子 --}}
-        <img src="{{ Auth::user()->image ? asset('/storage/img/'.Auth::user()->image) : asset('/img/default-icon.jpg')}}" class="rounded-circle" alt="" width="200" height="200">
+        {{-- DBに格納した画像データを再変換して表示 --}}
+        @if($user->image)
+        <img src="data:image/png;base64,{{$user->image }}" class="rounded-circle" alt="" width="200" height="200">
+        @else
+        <img src="{{ asset('/img/default-icon.jpg') }}" class="rounded-circle" alt="" width="200" height="200">
+        @endif
     </div>
 
     <div class="row">
@@ -45,9 +49,9 @@
 
     <div class="col-7 detail">
         <div data-bs-spy="scroll" data-bs-target="#list" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-          <p>
-            {{ $user->detail }}
-          </p>
+            <p>
+                {{ $user->detail }}
+            </p>
         </div>
     </div>
 

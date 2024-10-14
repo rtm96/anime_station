@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\Bbs;
 
 
 class AccountController extends Controller
 {
     /**
-     * ログイン画面
+     * TOP画面
      */
     public function showLogin()
     {
@@ -20,7 +21,7 @@ class AccountController extends Controller
     }
 
     /**
-     * アカウント画面
+     * アカウント作成画面
      */
     public function register(Request $request){
         
@@ -40,7 +41,7 @@ class AccountController extends Controller
             'name' => 'required|string|max:20|unique:users',
             'email' => 'required|email|unique:users,email|max:255|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
             'password' => 'required|min:8|max:16|confirmed|regex:/^[a-zA-Z0-9]+$/',
-            'image' => 'image',
+            'image' => 'image|max:50',
         ],[
             //未入力・重複・超過エラーメッセージ表示
             'name.required' => 'ユーザーネームは必須です。',
@@ -57,26 +58,26 @@ class AccountController extends Controller
             'password.confirmed' => 'パスワードが一致しません。',
             'password.regex' => 'パスワードは半角英数字のみで入力してください。',
             'image.image' => '無効なファイル形式です。',
+            'image.max' => '画像サイズが大きい為アップロードできません。',
         ]);
 
-        $image = $request->file('image');
+        // $image = $request->file('image');
 
-        // 画像がアップロードされていれば、storageに保存する処理
+
+        // 画像がアップロードされていれば、DBに保存する処理
         if($request->hasFile('image')){
-            $path = Storage::put('/public/img', $image);
-            $path = explode('/', $path);
+            // 受け取った画像データをbase64でエンコードしてDBに格納
+            $image = base64_encode(file_get_contents($request->image->getRealPath()));
         }else{
-            $path = null;
+            $image = null;
         }
-
-        // dd($path);
 
         // ユーザーの登録処理　画像が入っている場所を示す処理を追加
         $user= User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password), //パスワードをハッシュ化
-            'image' => $path[2] ?? null,
+            'image' => $image,
         ]);
         
         // ログイン画面にリダイレクト

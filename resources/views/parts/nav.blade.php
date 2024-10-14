@@ -166,7 +166,14 @@
 
                 <div class="dropdown">
                     <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none">
-                    <img src="{{ Auth::user()->image ? asset('/storage/img/'.Auth::user()->image) : asset('/img/default-icon.jpg')}}" alt="" width="32" height="32" class="rounded-circle me-2">
+                    {{-- <img src="{{$user->image }}" alt="" width="32" height="32" class="rounded-circle me-2"> --}}
+
+                    {{-- DBに格納した画像データを再変換して表示 --}}
+                    @if($user->image)
+                    <img src="data:image/png;base64,{{Auth::user()->image }}" class="rounded-circle me-2" alt="" width="32" height="32">
+                    @else
+                    <img src="{{ asset('/img/default-icon.jpg') }}" class="rounded-circle me-2" alt="" width="32" height="32">
+                    @endif
                     <strong class="profile-name">{{ Auth::user()->name}}</strong>
                     </a>
                 </div>
@@ -174,12 +181,6 @@
                 <div>　</div>
 
                 <ul class="nav nav-pills flex-column mb-auto">
-                {{-- <li class="nav-item">
-                    <a href="/home" class="nav-link link-body-emphasis" aria-current="page">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-                    ホーム
-                    </a>
-                </li> --}}
                 <li>
                     <a href="/profile" class="nav-link link-body-emphasis">
                     <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>

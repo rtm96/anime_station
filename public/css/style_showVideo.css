@@ -58,7 +58,8 @@ iframe{
     text-align: justify;
 }
 .profile-name.float-start{
-    margin-left: 240px;
+    margin-left: 250px;
+    margin-right: -20px;
 }
 .bi.bi-hand-thumbs-up{
     font-size: 26px;

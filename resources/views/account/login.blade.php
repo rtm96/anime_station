@@ -85,6 +85,8 @@
                                 <label for="floatingPassword" class="label-color">パスワード</label>
                                 @if ($errors->has('password'))
                                 <p class="error-text">{{ $errors->first('password') }}</p>
+                                @elseif ($errors->has('loginError'))
+                                    <p class="error-text">{{ $errors->first('loginError') }}</p>
                                 @endif
                             </div>
                             <div>

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Bbs;
+
 
 
 class ItemController extends Controller
@@ -44,7 +46,7 @@ class ItemController extends Controller
             'name' => 'required|string|max:20',
             'email' => 'required|email|max:255|unique:users,email,' . Auth::id(). ',id|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
             'detail'=> 'nullable|max:500',
-            'image' => 'image',
+            'image' => 'image|max:50',
         ], [
             //未入力・重複エラーメッセージ表示
             'name.required' => 'ユーザーネームは必須です。',
@@ -55,47 +57,33 @@ class ItemController extends Controller
             'email.regex' => 'メールアドレスの形式が正しくありません。',
             'detail.max' => '500文字以内で入力してください。',
             'image.image' => '無効なファイル形式です。',
+            'image.max' => '画像サイズが大きい為アップロードできません。',
         ]);
         $user = Auth::user();
 
-        // dd($request);
-        // \Log::channel('daily')->info($user);
-
-        // $path = null;
-
-        // 画像がアップロードされていれば、storageに保存する処理
-        if($request->hasFile('image')){
-            $path = Storage::put('/public/img', $image);
-            $path = explode('/', $path);
-            $path = $path[2];
-            $user->image = $path;
+        // 画像が更新された時に、DBに保存する処理
+        if ($request->hasFile('image')) {
+            // 新しい画像がアップロードされていれば更新
+            $image = base64_encode(file_get_contents($request->image->getRealPath()));
+        } else {
+            // 画像の更新がなければ、既存のデータを保持する
+            $image = $user->image;
         }
-
-        // dd($path);
-
-        // ユーザーの登録処理　画像が入っている場所を示す処理を追加
+        
+        // 個別に値を設定する
         $user->name = $request->name;
-        if($user->email !== $request->input('email')){
-            // \Log::channel('daily')->info($user->email);
-            // \Log::channel('daily')->info($request->input('email'));
-
-            $user->email = $request->email;
-        }
+        $user->email = $request->email;
         $user->detail = $request->detail;
-        if($request->has('password')){
+        $user->image = $image;
+
+        // パスワードの更新がある場合のみ更新
+        if ($request->filled('password')) {
             $user->password = bcrypt($request->password);
         }
-        // dd($user);
-        // $user->update([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'detail' => $request->detail,
-        //     'password' => bcrypt($request->password), 
-        //     'image' => $path,
-        // ]);
 
+        // ユーザー情報の保存
         $user->save();
-        // dd($validated);
+
 
         return redirect()->route('profile.index')->with('success', 'アカウント情報が更新されました。');
     }

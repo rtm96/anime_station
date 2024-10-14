@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -13,10 +15,11 @@ class UserController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         // ユーザーアカウント一覧＋ページネーション
         $users = User::select('id', 'name', 'email', 'auth', 'created_at', 'updated_at')->paginate(10);
 
-        return view('user.index', compact('users'));
+        return view('user.index', compact('users', 'user'));
     }
 
     /**
@@ -25,6 +28,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+        // dd($user);
         return view('user.edit', compact('user'));
     }
 

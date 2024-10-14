@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('admin', function (User $user) {
             return ($user->auth === 1);
         });
-
+        
         //管理ユーザーかつログインしたユーザーのみ投稿編集できる機能　@can('admin_or_myItem')←現在機能不全
         Gate::define('admin-or-myItem', function(User $user, Item $item){
             return((($user->auth === 0 && $item->user_id === $user->id) || $user->auth === 1));

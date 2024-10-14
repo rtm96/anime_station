@@ -26,7 +26,6 @@
 @include('parts.nav')
 
     <div class="content"> 
-    {{-- @foreach ($items as $item) --}}
 
         {{-- <iframe width="560" height="315" src="https://www.youtube.com/embed/GtYV_F71yeE?si=fK7QIV9f3aaHwnT1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> --}}
         <iframe width="560" height="315" src="{{ $item->videoURL }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -36,8 +35,15 @@
         </div>
 
         <div class="user-data">
-            <img src="{{ Auth::user()->image ? asset('/storage/img/'.Auth::user()->image) : asset('/img/default-icon.jpg')}}" alt="" width="32" height="32" class="rounded-circle video">
-            <strong class="profile-name float-start">{{ Auth::user()->name}}</strong>
+            {{-- <img src="{{ Auth::user()->image ? asset('/storage/img/'.Auth::user()->image) : asset('/img/default-icon.jpg')}}" alt="" width="32" height="32" class="rounded-circle video"> --}}
+            @if($user->image)
+            <img id="icon_img_prv" name='image' src="data:image/png;base64,{{$user->image }}" class="rounded-circle video" alt="" width="32" height="32">
+            @else
+            <img id="icon_img_prv" name='image' src="{{ asset('/img/default-icon.jpg') }}" class="rounded-circle video" alt="" width="32" height="32">
+            @endif
+            {{-- <strong class="profile-name float-start">{{ Auth::user()->name}}</strong> --}}
+            <strong class="profile-name float-start">{{ $user->name }}</strong>
+
             <strong class="profile-name float-end">いいね</strong>
         </div>
 
@@ -55,12 +61,28 @@
             </div>
         </div>
 
-    {{-- @endforeach --}}
+        {{-- <button onclick="like({{$item->id}})">いいね</button> --}}
+
     </div>
 </div>
 
-{{-- <iframe width="560" height="315" src="https://www.youtube.com/embed/Yf7-z6P9Q94?si=z-yHh72Xl0dkk8bL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> --}}
-
+<script>
+    function like(itemId) {
+    $.ajax({
+    headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+    },
+    url: `/like/${itemId}`,
+    type: "POST",
+    })
+    .done(function (data, status, xhr) {
+        console.log(data)
+    })
+    .fail(function (xhr, status, error) {
+        console.log()
+    })
+}
+</script>
 
 
 </body>
