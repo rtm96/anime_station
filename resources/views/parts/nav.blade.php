@@ -169,7 +169,7 @@
                     {{-- <img src="{{$user->image }}" alt="" width="32" height="32" class="rounded-circle me-2"> --}}
 
                     {{-- DBに格納した画像データを再変換して表示 --}}
-                    @if($user->image)
+                    @if(Auth::user()->image)
                     <img src="data:image/png;base64,{{Auth::user()->image }}" class="rounded-circle me-2" alt="" width="32" height="32">
                     @else
                     <img src="{{ asset('/img/default-icon.jpg') }}" class="rounded-circle me-2" alt="" width="32" height="32">

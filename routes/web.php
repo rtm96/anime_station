@@ -35,6 +35,7 @@ Route::put('/profile/{id}',[ItemController::class, 'update'])->name('profile.upd
 //プロフィール削除処理
 Route::delete('/profile/{id}',[ItemController::class, 'destroy'])->name('profile.destroy');
 
+
 Route::group(['middleware' => 'auth'], function () {
     //動画投稿一覧画面表示
     Route::get('/video', [VideoController::class, 'index'])->name('video.index');
@@ -52,12 +53,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/video/{item}', [VideoController::class, 'destroy'])->name('video.destroy');
 });
 
+
 //いいね機能非同期実装
 Route::group(['middleware' => ['auth:sanctum']], function () {
     //いいね付与
     Route::post('/like/{itemId}',[LikeController::class,'store'])->name('like');
     //いいね取り消し
-    Route::post('/unlike/{itemId}',[LikeController::class,'destroy'])->name('unlike');
+    Route::delete('/unlike/{itemId}',[LikeController::class,'destroy'])->name('unlike');
 });
 
 

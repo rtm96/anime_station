@@ -60,7 +60,9 @@
                     <tr>
                         {{-- <th><input type="checkbox" id="select-all"></th> --}}
                         <th>　</th>
+                        <div class="col-title">
                         <th scope="col-title">動画詳細</th>
+                        </div>
                         <th scope="col-word">いいね数</th>
                         <th scope="col-word">更新日</th>
                         <th scope="col-word">公開設定</th>

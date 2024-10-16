@@ -71,12 +71,9 @@ h3{
     margin-right: 0px;
     padding-bottom: 24px;
 }
-
-
-
-
-
-
+.col-word{
+    text-align: center;
+}
 .card-title{
     text-align: justify;
     display: -webkit-box;
@@ -128,18 +125,18 @@ h3{
 .card-body{
     margin-top: 10px;
 }
-th{
-    text-align: justify;
-}
 .row-word{
     margin: auto;
 }
+.col-title{
+    text-align: justify;
+}
 .card-day1{
-    margin-left: -15px;
+    /* margin-left: -15px; */
     padding-top: 60px;
 }
 .card-day2{
-    margin-left: -15px;
+    /* margin-left: -15px; */
     padding-top: 75px;
 }
 .card-day3{

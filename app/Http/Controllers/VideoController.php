@@ -41,15 +41,14 @@ class VideoController extends Controller
      */
     public function show(Item $item)
     {
+        // 各動画がユーザーに紐づいていることを想定
+        $user = $item->user; 
+        // アイテムに紐づくいいね数を取得
+        $item->loadCount('likes'); 
 
-        // $user = Auth::user();
-        // $item = Item::find($item_id);
-        $user = $item->user; // 各動画がユーザーに紐づいていることを想定
-
-        // \Log::channel('daily')->info($item);
-        // return view('video.show',  compact('user','item'));
         return view('video.show', compact('item', 'user'));
     }
+
 
     /**
      * 動画投稿画面表示
