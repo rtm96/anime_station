@@ -27,18 +27,20 @@ class LikeController extends Controller
                 'item_id' => $itemId,
             ]);
 
-            // likes_countをインクリメント
-            $item->increment('likes_count');
+            // 最新のいいね数を取得
+            $likesCount = $item->likesCount();
+
+            return response()->json([
+                'success' => true,
+                'likes_count' => $likesCount,
+                'liked' => true,
+            ]);
         }
 
-        // 最新のいいね数を取得
-        $likesCount = $item->likes_count;
-
         return response()->json([
-            'success' => true,
-            'likes_count' => $likesCount,
-            'liked' => true, 
-        ]);
+            'success' => false,
+            'message' => 'Already liked',
+        ], 400);
     }
 
     /**
@@ -47,27 +49,30 @@ class LikeController extends Controller
     public function destroy($itemId)
     {
         $item = Item::findOrFail($itemId);
-        
+
         // ログインしているユーザーのいいねを取得
         $like = Like::where('user_id', Auth::id())
                     ->where('item_id', $item->id)
                     ->first();
-        
+
         if ($like) {
-            $like->delete(); // いいねを削除
-    
-            // likes_countをデクリメント
-            $item->decrement('likes_count');
+            $like->delete();
+
+            // 最新のいいね数を取得
+            $likesCount = $item->likesCount();
+
+            return response()->json([
+                'success' => true,
+                'likes_count' => $likesCount,
+                'liked' => false,
+            ]);
         }
-    
-        // 最新のいいね数を取得
-        $likesCount = $item->likes_count; 
-    
+
         return response()->json([
-            'success' => true,
-            'likes_count' => $likesCount,
-            'liked' => false,
-        ]);
+            'success' => false,
+            'message' => 'Like not found',
+        ], 404);
     }
 }
+
 

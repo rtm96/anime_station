@@ -30,6 +30,7 @@ class Item extends Model
     {
         return $this->hasMany(Like::class);
     }
+
     /**
      * 特定ユーザーがいいねをしているかどうかを確認する
      */
@@ -37,5 +38,12 @@ class Item extends Model
     {
         return $this->likes()->where('user_id', $user->id)->exists();
     }
-}
 
+    /**
+     * いいね数を返すメソッドを追加
+     */
+    public function likesCount()
+    {
+        return $this->likes()->count();
+    }
+}
