@@ -52,4 +52,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Like::class);
     }
+
+    /**
+     * ユーザーが持つアイテム（投稿）とのリレーション
+     */
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
 }

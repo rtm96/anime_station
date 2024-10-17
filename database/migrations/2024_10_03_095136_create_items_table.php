@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
+            $table->foreignId('user_id')->constrained()->on('users')->onDelete('cascade'); // カスケード削除を追加
             $table->string('title',100);
             $table->string('detail',500);
             $table->string('videoURL',255);
