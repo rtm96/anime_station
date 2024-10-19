@@ -59,9 +59,9 @@ Route::group(['middleware' => 'auth'], function () {
 //いいね機能非同期実装
 Route::group(['middleware' => ['auth:sanctum']], function () {
     // いいね付与
-    Route::post('/like/{itemId}', [LikeController::class, 'store'])->name('like');
+    Route::post('/like/{itemId}', [LikeController::class, 'liked'])->name('liked');
     // いいね取り消し
-    Route::delete('/unlike/{itemId}', [LikeController::class, 'destroy'])->name('unlike');
+    // Route::delete('/unlike/{itemId}', [LikeController::class, 'destroy'])->name('unlike');
 });
 
 

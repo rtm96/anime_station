@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Item;
+use App\Models\Like;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Bbs;
 
 
 
@@ -41,7 +41,10 @@ class ItemController extends Controller
         ->select('items.*', 'users.name')
         ->paginate(10);
 
-        return view('item.index', compact('user','items', 'genres'));
+        // ログインしたユーザーの投稿に対してつけられた「いいね」数を取得
+        $likesCount = Like::whereIn('item_id', $user->items()->pluck('id'))->count();
+
+        return view('item.index', compact('user','items', 'genres', 'likesCount'));
     }
 
     /**

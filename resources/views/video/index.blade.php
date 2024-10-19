@@ -103,7 +103,7 @@
                         </td>
 
                         
-                        <td scope="row" class="row-word"><p class="card-day2">10いいね</p></td>
+                        <td scope="row" class="row-word"><p class="card-day2">{{ $item->likesCount() }}いいね</p></td>
                         <td scope="row" class="row-word"><p class="card-day1"><span>{{ $item->updated_at->format('Y') }}</span><br/>{{ $item->updated_at->format('m/d') }}</p></td>
                         <td scope="row" class="row-word"><p class="card-day2">{{ $genres[$item->type] ?? '未分類' }}</p></td>
                         <td scope="row" class="row-word"><p class="card-day3">

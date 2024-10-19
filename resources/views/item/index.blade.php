@@ -42,13 +42,13 @@
     <a href="/profile/edit" class="btn btn-custom profile">編集</a>
 
     <div class="follow">
-        <strong>総いいね数</strong></br>
+        <strong>総いいね数　{{ $likesCount }}</strong></br>
         <strong>　</strong>
     </div>
 
     <div class="col-7 detail">
         <div data-bs-spy="scroll" data-bs-target="#list" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-            <p>
+            <p class="p-detail">
                 {{ $user->detail }}
             </p>
         </div>
@@ -61,17 +61,6 @@
     <div class="col-11">
         <hr>
     </div>
-
-    {{-- <div class="col-11">
-        <h1>{{ $user->name }}の投稿一覧</h1>
-        <hr>
-        @foreach($items as $item)
-            <div class="item">
-                <h3>{{ $item->title }}</h3>
-                <p>{{ $item->description }}</p>
-            </div>
-        @endforeach
-    </div> --}}
 
     {{-- カード --}}
     <div class="row justify-content-center"> <div class="col-md-11">
@@ -131,7 +120,7 @@
                         </td>
 
                         
-                        <td scope="row" class="row-word"><p class="card-day2">10いいね</p></td>
+                        <td scope="row" class="row-word"><p class="card-day2">{{ $item->likesCount() }}いいね</p></td>
                         <td scope="row" class="row-word"><p class="card-day1"><span>{{ $item->updated_at->format('Y') }}</span><br/>{{ $item->updated_at->format('m/d') }}</p></td>
                         <td scope="row" class="row-word"><p class="card-day2">{{ $genres[$item->type] ?? '未分類' }}</p></td>
                         <td scope="row" class="row-word"><p class="card-day3">
