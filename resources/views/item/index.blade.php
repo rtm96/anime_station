@@ -35,7 +35,7 @@
         @endif
     </div>
 
-    <div class="row">
+    <div class="row name">
         <p class="userName">{{ Auth::user()->name}}</p>
     </div>
 
