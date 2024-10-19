@@ -58,7 +58,6 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        {{-- <th><input type="checkbox" id="select-all"></th> --}}
                         <th>　</th>
                         <div class="col-title">
                         <th scope="col-title">動画詳細</th>
@@ -74,7 +73,6 @@
                     @foreach ($items as $item)
                     <tbody>
                     <tr>
-                        {{-- <td><input type="checkbox" name="item_ids[]" value="{{ $item->id }}" class="form-check-input"></td> --}}
                         <td>　</td>
                         <td class="td-card ms-0">
 
@@ -110,13 +108,11 @@
                         <td scope="row" class="row-word"><p class="card-day2">{{ $genres[$item->type] ?? '未分類' }}</p></td>
                         <td scope="row" class="row-word"><p class="card-day3">
                             {{-- 管理ユーザーかつログインしたユーザーのみ投稿編集できる機能 --}}
-                            {{-- @can('admin-or-myItem') --}}
                             @if(($user->auth === 0 && $item->user_id === $user->id) || $user->auth === 1)
                             <a href="{{route('video.edit',$item->id)}}" class="btn btn-sm btn-custom">
                                 編集
                             </a>
                             @endif
-                            {{-- @endcan --}}
                             </p>
                         </td>
 

@@ -25,7 +25,6 @@
 <div class="container">
 @include('parts.nav')
 
-{{-- @foreach ($users as $user) --}}
 <div class="content">
     <div class="position-absolute">
         {{-- DBに格納した画像データを再変換して表示 --}}
@@ -40,7 +39,7 @@
         <p class="userName">{{ Auth::user()->name}}</p>
     </div>
 
-    <a href="/profile/edit" class="btn btn-custom">編集</a>
+    <a href="/profile/edit" class="btn btn-custom profile">編集</a>
 
     <div class="follow">
         <strong>総いいね数</strong></br>
@@ -62,6 +61,110 @@
     <div class="col-11">
         <hr>
     </div>
+
+    {{-- <div class="col-11">
+        <h1>{{ $user->name }}の投稿一覧</h1>
+        <hr>
+        @foreach($items as $item)
+            <div class="item">
+                <h3>{{ $item->title }}</h3>
+                <p>{{ $item->description }}</p>
+            </div>
+        @endforeach
+    </div> --}}
+
+    {{-- カード --}}
+    <div class="row justify-content-center"> <div class="col-md-11">
+        <div class="card">
+            <div class="card-header">
+                <thead>
+                    <strong class="strong title">Vboard</strong>
+                </thead>
+            </div>
+
+            <div class="card-body">
+            
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>　</th>
+                        <div class="col-title">
+                        <th scope="col-title">動画詳細</th>
+                        </div>
+                        <th scope="col-word">いいね数</th>
+                        <th scope="col-word">更新日</th>
+                        <th scope="col-word">公開設定</th>
+                        <th scope="col-word">　</th>
+                        <th><div></div></th>
+                    </tr>
+                    </thead>
+
+                    @foreach ($items as $item)
+                    <tbody>
+                    <tr>
+                        <td>　</td>
+                        <td class="td-card ms-0">
+
+                        <div class="card mx-0" style="max-width: 500px;">
+                            <div class="row g-0">
+                                <div class="col-md-5">
+                                    <div class="card-body">
+                                        <h6 class="card-title">{{ $item->title }}</h6>
+                                        <div class="flex-taxt">
+                                        <p class="user-update">更新者：{{ $item->name }}</p>
+                                        </div>
+                                        <p class="card-detail">
+                                            {{ $item->detail }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="{{ route('video.show', ['item' => $item] ) }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                                        <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                    </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        </td>
+
+                        
+                        <td scope="row" class="row-word"><p class="card-day2">10いいね</p></td>
+                        <td scope="row" class="row-word"><p class="card-day1"><span>{{ $item->updated_at->format('Y') }}</span><br/>{{ $item->updated_at->format('m/d') }}</p></td>
+                        <td scope="row" class="row-word"><p class="card-day2">{{ $genres[$item->type] ?? '未分類' }}</p></td>
+                        <td scope="row" class="row-word"><p class="card-day3">
+                            @if(($user->auth === 0 && $item->user_id === $user->id) || $user->auth === 1)
+                            <a href="{{route('video.edit',$item->id)}}" class="btn btn-sm btn-custom post">
+                                編集
+                            </a>
+                            @endif
+                            </p>
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                    @endforeach
+                </table>
+
+
+                <div class="modal-footer">
+                    <a class="btn btn-secondary page" class="icon-link icon-link-hover" href="#" role="button">
+                        ↑
+                    </a>
+
+                    <div class="pagination justify-content-center mt-4">
+                        {{ $items->links('pagination::bootstrap-4') }}
+                    </div>
+                </div>
+    
+
+        </div></div></div>
+    </div>
+
+</div>
 
     @if(session('success'))
     <div class="toast position-fixed bottom-0 end-0 text-bg-primary fade show" role="alert" aria-live="assertive" aria-atomic="true">

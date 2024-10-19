@@ -39,6 +39,8 @@ Route::delete('/profile/{id}',[ItemController::class, 'destroy'])->name('profile
 Route::group(['middleware' => 'auth'], function () {
     //動画投稿一覧画面表示
     Route::get('/video', [VideoController::class, 'index'])->name('video.index');
+    //ログインユーザー投稿一覧表示
+    // Route::get('/user-posts', [VideoController::class, 'profile'])->name('userPost');
     //動画視聴画面表示
     Route::get('/video/show/{item}', [VideoController::class, 'show'])->name('video.show');
     //動画投稿画面表示

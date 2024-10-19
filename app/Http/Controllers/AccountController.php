@@ -58,7 +58,7 @@ class AccountController extends Controller
             'password.confirmed' => 'パスワードが一致しません。',
             'password.regex' => 'パスワードは半角英数字のみで入力してください。',
             'image.image' => '無効なファイル形式です。',
-            'image.max' => '画像サイズが大きい為アップロードできません。',
+            'image.max' => '画像サイズが大きい為アップロードできません。※50KBまで',
         ]);
 
         // $image = $request->file('image');

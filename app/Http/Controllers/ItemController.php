@@ -16,13 +16,34 @@ use Illuminate\Support\Facades\Bbs;
 class ItemController extends Controller
 {
     /**
+     * プロフィール画面　ストック
+     */
+    // public function index()
+    // {
+    //     $user = Auth::user();
+    //     return view('item.index', compact('user'));
+    // }
+
+    /**
      * プロフィール画面
      */
-    public function index()
+    public function index(Request $request)
     {
+        $genres = [
+            '1' => '公開',
+            '2' => '非公開',
+        ];
         $user = Auth::user();
-        return view('item.index', compact('user'));
+
+        // ログインしたユーザーの投稿だけを取得
+        $items = Item::where('user_id', $user->id)
+        ->leftJoin('users', 'users.id', '=', 'items.user_id')
+        ->select('items.*', 'users.name')
+        ->paginate(10);
+
+        return view('item.index', compact('user','items', 'genres'));
     }
+
     /**
      * プロフィール編集画面
      */
@@ -57,7 +78,7 @@ class ItemController extends Controller
             'email.regex' => 'メールアドレスの形式が正しくありません。',
             'detail.max' => '500文字以内で入力してください。',
             'image.image' => '無効なファイル形式です。',
-            'image.max' => '画像サイズが大きい為アップロードできません。',
+            'image.max' => '画像サイズが大きい為アップロードできません。※50KBまで',
         ]);
         $user = Auth::user();
 

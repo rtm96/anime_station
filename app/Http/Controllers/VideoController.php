@@ -37,6 +37,20 @@ class VideoController extends Controller
     }
 
     /**
+     * ログインユーザーの投稿を表示
+     */
+    // public function profile()
+    // {
+    //     $user = Auth::user();
+        // ログインユーザーの投稿を取得
+        // $items = Item::where('user_id', $user->id)->get();
+
+        // プロフィール画面用のビューを指定
+    //     return view('items.index', compact('user', 'items'));
+    // }
+
+
+    /**
      * 動画視聴画面表示
      */
     public function show(Item $item)
@@ -48,7 +62,6 @@ class VideoController extends Controller
 
         return view('video.show', compact('item', 'user'));
     }
-
 
     /**
      * 動画投稿画面表示

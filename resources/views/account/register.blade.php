@@ -84,8 +84,8 @@
                                     <div class="mb-3">
                                         <label for="icon" class="form-label">このアイコン画像に決定</label>
                                         <input id="icon" name="image" class="form-control" type="file">
-                                        @if ($errors->has('file'))
-                                        <p class="error-text">{{ $errors->first('file') }}</p>
+                                        @if ($errors->has('image'))
+                                        <p class="error-text">{{ $errors->first('image') }}</p>
                                         @endif
                                     </div>
                                 </div>

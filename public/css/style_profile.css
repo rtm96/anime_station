@@ -20,9 +20,9 @@
     margin-top: -300px;
     font-size: 20px;
 }
-.btn.btn-custom{
+.btn.btn-custom.profile{
     margin-left: 680px;
-    margin-top: -240px;
+    margin-top: 0px;
     width: 120px;
     background-color: #00a3af;
     color: white;
@@ -52,16 +52,171 @@ hr{
     margin-left: 100px;
 }
 .userName{
-    padding: 0px 40px 0px 357px;
-    margin-top: -200px;
+    padding: 0px 40px 0px 350px;
+    margin-top: 100px;
     font-weight: bold;
     font-size: 20px;
 }
 .follow{
     text-align:start;
-    margin-top: -150px;
+    margin-top: -20px;
     margin-left: 345px;
 }
 .col-2{
-    margin: 40px 40px -10px 80px;
+    margin: 20px 40px -10px 80px;
+    font-size: 18px;
+}
+
+
+/*
+投稿一覧画面表示
+*/
+h3{
+    position:absolute;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.col-2{
+    /* display: inline; */
+}
+.row{
+    padding: 8px;
+}
+.col-11.detail{
+    text-align: justify;
+}
+.btn-secondary.page{
+    display: block;
+    width: 40px;
+    margin-right:auto;
+}
+.pagination{
+    margin: auto;
+}
+.user-name{
+    position: absolute;
+    right: 0;
+    margin-right: 100px;
+    margin-top: 160px;
+}
+.btn-primary.btn-sm.index{
+    display: block;
+    padding: 5px;
+    margin-right: 8px;
+    margin-bottom: 15px;
+    width: 120px;
+}
+.form-detail{
+    text-align: justify;
+}
+.pagination.justify-content-center.mt-4{
+    display: block;
+    margin-right: 0px;
+    padding-bottom: 24px;
+}
+.col-word{
+    text-align: center;
+}
+.card-title{
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.card-detail{
+    font-size: 11px;
+    color: gray;
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-left: -45px;
+}
+.user-update{
+    font-size: 11px;
+    color: gray;
+    text-decoration: none;
+    margin-bottom: 5px;
+    margin-left: -45px;
+}
+.flex-taxt{
+    display: flex;
+    justify-content:space-between;
+}
+.col-md-4{
+    margin: auto;
+    margin: 10px;
+}
+.col-md-6{
+    margin: auto;
+    background-color: #f5f5f5;
+    border-radius: 5px 5px 5px 5px;
+    border: thick double white;
+}
+.card.mb-2{
+    margin: auto;
+    width: 640px;
+}
+.row.g-0{
+    margin: 0;
+    padding: 0;
+}
+.td-card{
+    padding: 0;
+    margin: 0;
+}
+.card-body{
+    margin-top: 10px;
+}
+.row-word{
+    margin: auto;
+}
+.col-title{
+    text-align: justify;
+}
+.card-day1{
+    /* margin-left: -15px; */
+    padding-top: 60px;
+}
+.card-day2{
+    padding-top: 75px;
+}
+.card-day3{
+    padding-top: 70px;
+}
+span{
+    font-size: 13px;
+}
+.card.test{
+    display: flex;
+}
+.btn.btn-sm.btn-custom.post{
+    width: 50px;
+    background-color: #00a3af;
+    color: white;
+}
+.card.mx-0{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.bi.bi-play-fill{
+    font-size: 100px;
+    color: #00a3af;
+    margin: -3px;
+}
+.th-span{
+    font-size: 16px;
+    margin-left: 510px;
+}
+.favorites{
+    margin-left: 570px;
+    margin-top: -110px;
+    position: absolute;
+}
+.btn.btn-outline-secondary{
+    margin-right: -420px;
+    margin-left: 425px;
+    margin-top: -67px;
 }

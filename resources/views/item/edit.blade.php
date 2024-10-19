@@ -51,8 +51,8 @@
                     <div class="col-2 file">
                     <input id="icon" name="image" class="form-control form-control-sm" type="file">
                     </div>
-                    @if ($errors->has('file'))
-                    <p class="error-text">{{ $errors->first('file') }}</p>
+                    @if ($errors->has('image'))
+                    <p class="error-text">{{ $errors->first('image') }}</p>
                     @endif
                 </div>
             </div>
