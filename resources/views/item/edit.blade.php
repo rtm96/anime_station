@@ -11,7 +11,7 @@
     <link href="https://getbootstrap.jp/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
     {{-- CSS --}}
-    <link rel="stylesheet" href="{{asset('/css/style_editprofile.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/style_editProfile.css')}}">
 
     {{-- font --}}
     <link href="https://fonts.cdnfonts.com/css/borgen" rel="stylesheet">
