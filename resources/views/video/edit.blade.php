@@ -29,7 +29,8 @@
 <div class="content">
     <h3>投稿を編集する</h3>
     <div class="create-form"> 
-        <a class="btn btn-secondary close" href="{{ route('video.index')}}" role="button">キャンセル</a>
+        <a class="btn btn-secondary close video" href="{{ route('video.index')}}" role="button">投稿一覧へ</a>
+        <a class="btn btn-secondary close profile" href="{{ route('profile.index')}}" role="button">プロフィールへ</a>
             {{-- 商品編集・更新処理 --}}
             <form method="POST" action="{{ route('video.update', $item->id)}}">
             @csrf

@@ -51,6 +51,20 @@ textarea{
     margin-top: -115px;
     margin-bottom: 50px;
 }
+.btn.btn-secondary.close.video{
+    width: 160px;
+    border-radius: 30px 30px 30px 30px;
+    margin-left: 830px;
+    margin-top: -195px;
+    margin-bottom: 50px;
+}
+.btn.btn-secondary.close.profile{
+    width: 160px;
+    border-radius: 30px 30px 30px 30px;
+    margin-left: 830px;
+    margin-top: -115px;
+    margin-bottom: 50px;
+}
 .form-label.col-4{
     padding-top: 10px;
 }
