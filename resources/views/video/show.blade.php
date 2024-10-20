@@ -31,7 +31,6 @@
 
     <div class="content"> 
 
-        {{-- <iframe width="560" height="315" src="https://www.youtube.com/embed/GtYV_F71yeE?si=fK7QIV9f3aaHwnT1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> --}}
         <iframe width="560" height="315" src="{{ $item->videoURL }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
         <div class="videoTitle">
@@ -39,13 +38,11 @@
         </div>
 
         <div class="user-data">
-            {{-- <img src="{{ Auth::user()->image ? asset('/storage/img/'.Auth::user()->image) : asset('/img/default-icon.jpg')}}" alt="" width="32" height="32" class="rounded-circle video"> --}}
             @if($user->image)
             <img id="icon_img_prv" name='image' src="data:image/png;base64,{{$user->image }}" class="rounded-circle video" alt="" width="32" height="32">
             @else
             <img id="icon_img_prv" name='image' src="{{ asset('/img/default-icon.jpg') }}" class="rounded-circle video" alt="" width="32" height="32">
             @endif
-            {{-- <strong class="profile-name float-start">{{ Auth::user()->name}}</strong> --}}
             <strong class="profile-name float-start">{{ $user->name }}</strong>
 
             <strong class="profile-name float-end">いいね</strong>
@@ -63,8 +60,6 @@
                 <span class="like-count">{{ $item->likesCount() }}</span>
             </form>
         </div>
-
-
 
         <div class="col-6 detail">
             <div data-bs-spy="scroll" data-bs-target="#list" data-bs-smooth-scroll="true" tabindex="0" data-bs-root-margin="0px 0px -40%" class="scrollspy-example bg-body-tertiary p-2 rounded-2" style="height: 150px">
@@ -129,12 +124,6 @@
         });
     });
 </script>
-
-
-
-
-
-
 
 </body>
 </html>

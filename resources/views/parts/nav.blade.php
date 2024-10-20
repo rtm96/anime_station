@@ -154,7 +154,6 @@
 
                 <div class="dropdown">
                     <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none">
-                    {{-- <img src="{{$user->image }}" alt="" width="32" height="32" class="rounded-circle me-2"> --}}
 
                     {{-- DBに格納した画像データを再変換して表示 --}}
                     @if(Auth::user()->image)

@@ -33,7 +33,6 @@
 
 
         <div class="position-absolute start-50">
-            {{-- <img src="{{ Auth::user()->image ? asset('/storage/img/'.Auth::user()->image) : asset('/img/default-icon.jpg')}}" class="rounded-circle edit" alt="" width="200" height="200"> --}}
             @if($user->image)
             <img id="icon_img_prv" name='image' src="data:image/png;base64,{{$user->image }}" class="rounded-circle edit" alt="" width="200" height="200">
             @else

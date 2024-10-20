@@ -167,7 +167,6 @@
     @endif
 
 </div>
-{{-- @endforeach --}}
 
 </div>
 
