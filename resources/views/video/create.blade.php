@@ -16,6 +16,10 @@
     {{-- font --}}
     <link href="https://fonts.cdnfonts.com/css/borgen" rel="stylesheet">
 
+    {{-- favicon --}}
+    <link rel="shortcut icon" href="{{ asset('/favicon.jpg') }}">
+
+
     {{-- script --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 

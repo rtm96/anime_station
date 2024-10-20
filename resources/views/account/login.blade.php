@@ -20,32 +20,11 @@
     {{-- font --}}
     <link href="https://fonts.cdnfonts.com/css/borgen" rel="stylesheet">
 
+    {{-- favicon --}}
+    <link rel="shortcut icon" href="{{ asset('/favicon.jpg') }}">
+
     {{-- script --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    {{-- JSscript --}}
-    <script>
-        window.onload = function(){
-        // テキストボックスのDOMを取得
-        const username = document.getElementById("floatingInput1","floatingInput2","floatingInput3","floatingInput4");
-        // 活性/非活性を切り替えるボタンのDOMを取得
-        const button = document.getElementById("sendbutton");
-        // 入力テキストのキーアップイベント
-        username.addEventListener('keyup', function() {
-        // テキストボックスに入力された値を取得
-        const text = username.value;
-        console.log(text);
-        // テキストが入力されている場合
-        if(text) {
-        // ボタンのdisabled属性を取り除く
-            button.disabled = null;
-            } else {
-        // ボタンにdisabledを設定する
-            button.disabled = "disabled";
-            }
-        })
-        }
-    </script>
 
     <title>ログイン / anime_station</title>
 </head>
