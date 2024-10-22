@@ -80,7 +80,7 @@ class VideoController extends Controller
             'detail.max' => '500文字以内で入力してください。',
             'videoURL.required' => 'URLが入力されていません。',
             'videoURL.url' => '有効なURLではありません。',
-            'videoURL.max' => '500文字以内で入力してください。',
+            'videoURL.max' => '255文字以内で入力してください。',
         ]);
         $validated['user_id'] = Auth::id();
         Item::create($validated);
@@ -122,7 +122,7 @@ class VideoController extends Controller
             'detail.max' => '500文字以内で入力してください。',
             'videoURL.required' => 'URLが入力されていません。',
             'videoURL.url' => '有効なURLではありません。',
-            'videoURL.max' => '500文字以内で入力してください。',
+            'videoURL.max' => '255文字以内で入力してください。',
         ]);
         $validated['user_id'] = Auth::id();
 
