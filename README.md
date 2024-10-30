@@ -1,7 +1,9 @@
-# anime_station　動画作品投稿管理システム
+# anime_station　
+<img width="1440" alt="2024-10-30" src="https://github.com/user-attachments/assets/a748c9d0-f5e8-44e7-b511-f3af084e8432">
+
 
 ## 概要
-このシステムでは、YouTubeで投稿した動画作品を管理して、視聴、いいねを押すことができます。
+このシステムでは、YouTubeで投稿した動画作品を管理して、視聴、いいねを押すことができる動画作品投稿管理システムです。
 
 作品の登録から編集、削除を行うことができ、各ユーザーが投稿した動画作品を閲覧することができます。
 
@@ -27,7 +29,7 @@ Laravel 10.48.22
 [設計書ページへ](https://drive.google.com/drive/folders/1YgAsX0wfnoFdUEcnnU-STgbtIhC9oclf?usp=drive_link)
 
 ## システム閲覧
-[アプリケーションページへ](https://anime-station-8a4665b10849.herokuapp.com)
+[サービスのページへ](https://anime-station-8a4665b10849.herokuapp.com)
 
 ## テストアカウント情報
 ```
