@@ -94,7 +94,7 @@
 
         {{-- フッター --}}
         <footer class="text-center mt-4">
-            <p>© 2024 anime_station</p>
+            <p>© 2025 anime_station</p>
         </footer>
     </body>
 </html>
