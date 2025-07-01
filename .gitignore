@@ -1,3 +1,4 @@
+# ── Laravel default ───────────────────────────────────────────
 /.phpunit.cache
 /node_modules
 /public/build
@@ -5,9 +6,7 @@
 /public/storage
 /storage/*.key
 /vendor
-.env
-.env.backup
-.env.production
+.env*
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
@@ -17,3 +16,19 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# ── Laravel runtime / cache ──────────────────────────────────
+bootstrap/cache/*
+storage/logs/*
+storage/framework/*
+
+# ── macOS / Windows OS files ────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Docker artifacts (local only) ───────────────────────────
+docker/*.log
+db-data/
+
+# ── Build artifacts ─────────────────────────────────────────
+public/mix-manifest.json
